@@ -2,6 +2,7 @@ trigger:
   branches:
     include:
       - main
+      - master  # Covers whichever branch your Fabric workspace is syncing to
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -9,27 +10,21 @@ pool:
 steps:
 - checkout: self
   persistCredentials: true
-  fetchDepth: 0  # CRITICAL: Fetches the entire commit history so Git doesn't send broken/missing objects
+  fetchDepth: 0  # Ensures full history is present
 
 - script: |
     # 1. Identity setup
     git config --global user.email "fabric-bot@azuredevops.com"
     git config --global user.name "Fabric Mirror Bot"
     
-    # 2. OPTIMIZATION: Boost network and packing buffers to prevent "index-pack failed"
+    # 2. Boost buffers to prevent unpacking crashes
     git config --global http.postBuffer 524288000
     git config --global http.maxRequestBuffer 100M
     git config --global core.compression 0
     
-    # 3. Clean environment check
-    git remote remove target_mirror 2>/dev/null || true
-    
-    # 4. Add the authenticated target
-    git remote add target_mirror "https://${GITHUB_PAT}@github.com/vpnagrani/CivicSustainIQ-fabric.git"
-    
-    # 5. ULTIMATE FIX: Force push the exact repository mirror state
-    # This ensures all tree structures and loose objects match DevOps perfectly
-    git push --force target_mirror main
+    # 3. DYNAMIC PUSH: Pulls the active branch dynamically (HEAD) 
+    # and forces it out to GitHub's 'main' branch
+    git push --force "https://${GITHUB_PAT}@github.com/vpnagrani/CivicSustainIQ-fabric.git" HEAD:main
     
   displayName: 'Mirroring Microsoft Fabric Workspace to External Git'
   env:
