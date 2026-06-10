@@ -1,0 +1,27 @@
+trigger:
+  branches:
+    include:
+      - main  # Change this if your Fabric workspace syncs to a different branch
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- checkout: self
+  persistCredentials: true  # Allows the pipeline to read your DevOps Git history
+
+- script: |
+    # 1. Clean up the local agent environment tracking
+    git config --global user.email "fabric-bot@azuredevops.com"
+    git config --global user.name "Fabric Mirror Bot"
+    
+    # 2. Add the external target repository as a remote destination
+    # Replace your-github-username/your-repo-name with your actual target URL
+    # Use the PAT token generated in Step 1
+    git remote add target https://$(GITHUB_PAT)@github.com/your-github-username/your-repo-name.git
+    
+    # 3. Force push all branches and tags to match your Fabric workspace exactly
+    git push --prune target +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
+  displayName: 'Mirroring Microsoft Fabric Workspace to External Git'
+  env:
+    GITHUB_PAT: $(SECRET_GITHUB_PAT) # Secure environment variable mapped below
