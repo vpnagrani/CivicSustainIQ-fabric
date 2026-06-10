@@ -17,7 +17,7 @@ steps:
     
     # 2. Add the external target destination using the environment variable injection safely
     # Note: Using $GITHUB_PAT instead of $(GITHUB_PAT) prevents Bash command parsing errors
-    git remote add target "https://${GITHUB_PAT}@github.com/your-github-username/your-repo-name.git"
+    git remote add target "https://${GITHUB_PAT}@github.com/vpnagrani/CivicSustainIQ-fabric.git"
     
     # 3. Synchronize repository state completely
     git push --prune target +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
