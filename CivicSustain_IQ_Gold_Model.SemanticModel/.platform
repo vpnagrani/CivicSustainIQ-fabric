@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "CivicSustain_IQ_Gold_Model"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "bbc73059-afd3-9bae-4fad-9a3c844e3614"
+  }
+}

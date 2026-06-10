@@ -1,0 +1,147 @@
+table dim_small_area_mapping
+	lineageTag: f96905ac-a1a6-4e32-a261-032cd8b9ed45
+	sourceLineageTag: [dbo].[dim_small_area_mapping]
+
+	column SA_PUB2011
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f7cbca90-6186-4b1b-b636-dac7d5ea880f
+		sourceLineageTag: SA_PUB2011
+		summarizeBy: none
+		sourceColumn: SA_PUB2011
+
+		annotation SummarizationSetBy = Automatic
+
+	column SA_PUB2016
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 6c5514bb-7c59-43dd-aac5-f489253c3cd3
+		sourceLineageTag: SA_PUB2016
+		summarizeBy: none
+		sourceColumn: SA_PUB2016
+
+		annotation SummarizationSetBy = Automatic
+
+	column SA_PUB2022
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e2dc7671-96ed-4516-a04e-3c433b15834c
+		sourceLineageTag: SA_PUB2022
+		summarizeBy: none
+		sourceColumn: SA_PUB2022
+
+		annotation SummarizationSetBy = Automatic
+
+	column SA_GEOGID_2022
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e7ec7205-88f3-4c20-9389-93abf58f7cdb
+		sourceLineageTag: SA_GEOGID_2022
+		summarizeBy: none
+		sourceColumn: SA_GEOGID_2022
+
+		annotation SummarizationSetBy = Automatic
+
+	column SA_CHANGE_CODE
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: fffd8dba-36ea-45e6-b36c-c23bdcbca289
+		sourceLineageTag: SA_CHANGE_CODE
+		summarizeBy: sum
+		sourceColumn: SA_CHANGE_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column SA_URBAN_AREA_FLAG
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: fce06c06-c2ca-467e-8965-9d5ecf376b09
+		sourceLineageTag: SA_URBAN_AREA_FLAG
+		summarizeBy: sum
+		sourceColumn: SA_URBAN_AREA_FLAG
+
+		annotation SummarizationSetBy = Automatic
+
+	column SA_URBAN_AREA_NAME
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 2fb843ba-4f3d-4daa-8652-fe6b5ff9111f
+		sourceLineageTag: SA_URBAN_AREA_NAME
+		summarizeBy: none
+		sourceColumn: SA_URBAN_AREA_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ED_OFFICIAL
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 0081d819-336f-44f9-a170-afee1a28406d
+		sourceLineageTag: ED_OFFICIAL
+		summarizeBy: none
+		sourceColumn: ED_OFFICIAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column ED_ENGLISH
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 6968df99-90de-4534-8c65-548a977b49fd
+		sourceLineageTag: ED_ENGLISH
+		summarizeBy: none
+		sourceColumn: ED_ENGLISH
+
+		annotation SummarizationSetBy = Automatic
+
+	column ED_ID_STR
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f4d257cf-fd75-442a-8cd2-12193044db5e
+		sourceLineageTag: ED_ID_STR
+		summarizeBy: none
+		sourceColumn: ED_ID_STR
+
+		annotation SummarizationSetBy = Automatic
+
+	column ED_PART_COUNT
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 2b95d44e-6526-4713-a301-14dd69d2e99d
+		sourceLineageTag: ED_PART_COUNT
+		summarizeBy: sum
+		sourceColumn: ED_PART_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+	column COUNTY_CODE
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 68fa2034-965e-43e9-878e-3601a8fd4cef
+		sourceLineageTag: COUNTY_CODE
+		summarizeBy: sum
+		sourceColumn: COUNTY_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column COUNTY_ENGLISH
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: c059ce1b-266a-45bf-a16e-7e5643d4a094
+		sourceLineageTag: COUNTY_ENGLISH
+		summarizeBy: none
+		sourceColumn: COUNTY_ENGLISH
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_small_area_mapping = entity
+		mode: directLake
+		source
+			entityName: dim_small_area_mapping
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,2784 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/dataAgent/definition/dataSource/1.0.0/schema.json",
+  "artifactId": "ed9036d2-99e6-b0bd-4df9-dc33bca5943b",
+  "workspaceId": "00000000-0000-0000-0000-000000000000",
+  "dataSourceInstructions": "## Data Source & Schema Handling Instructions\n\n### 1. Metastore Catalog Context\n* **Default Catalog & Schema:** All data assets are contained within the `lh_sustainability_gold` database catalog under the default schema (`dbo`). When generating direct native SQL queries, use the fully qualified path format: `lh_sustainability_gold.dbo.table_name`.\n\n### 2. Table Semantics & Data Types\n* **`fact_sustainability_assessments` (Delta Table)**\n  * `SA_CODE`: Primary alphanumeric tracking key for granular geographic census mappings. Treat strictly as a `STRING`. Do not cast to numeric formats, as leading zeros are functional.\n  * `Updated_Energy_Rating`: High-level categorical text field containing values (`A`, `B`, `C`, `D`, `E`, `F`, `G`, `UNKNOWN`). Use this column exclusively for rating tier distribution, counts, or grouping inquiries.\n  * `GroundFloorArea_sq_m`: Continuous numeric decimal (`DOUBLE`/`FLOAT`). Always apply a protection filter (`WHERE GroundFloorArea_sq_m > 0`) before using it as a denominator in calculated expressions.\n  * `Energy_Intensity_Per_SqM`: Pre-calculated continuous metric field (`DOUBLE`).\n\n* **`dim_small_area_mapping` (Delta Table)**\n  * Contains the foundational structure for mapping local areas to broader electoral jurisdictions.\n  * The column containing the primary join key (e.g., `SA_PUB2016` or `SA_PUB2022`) is a unique alphanumeric `STRING`.\n\n### 3. Query Generation Rules\n* **Explicit Column Filtering:** When users inquire about specific categorical string states (such as identifying properties in rating bands `F` or `G`), construct categorical filter predicates using exact match arrays or `IN` statements (e.g., `WHERE Updated_Energy_Rating IN ('F', 'G')`). \n* **Handling Unique Text Values:** When extracting categories present within an aggregated grouping, use `DISTINCT` or group-concatenation functions rather than pulling raw scalar row strings to avoid exceeding response thresholds on large datasets.\n* **Join Optimization:** Always join tables using the designated explicit key relationships defined in the architecture blueprint. Avoid trying to infer implicit text-based joins across tables using text columns like `CountyName` if an explicit key layout like `GeographyKey` is available.",
+  "displayName": "lh_sustainability_gold",
+  "type": "lakehouse_tables",
+  "userDescription": null,
+  "metadata": {},
+  "elements": [
+    {
+      "id": "5f1f2a0a-0c71-4127-b5f7-00c860ce8aeb",
+      "is_selected": false,
+      "display_name": "Schemas",
+      "type": "schema_grouping",
+      "description": null,
+      "children": [
+        {
+          "id": "493b820a-b24d-478b-b645-ca93083b2fde",
+          "is_selected": false,
+          "display_name": "dbo",
+          "type": "lakehouse_tables.schema",
+          "description": null,
+          "children": [
+            {
+              "id": "0c9447e4-e489-41ef-8c26-fef19ad57c6e",
+              "is_selected": false,
+              "display_name": "Tables",
+              "type": "table_grouping",
+              "description": null,
+              "children": [
+                {
+                  "id": "c29dd1c0-1eb0-4242-8f9f-bf5ee27dc7e1",
+                  "is_selected": true,
+                  "display_name": "dim_deprivation_index",
+                  "type": "lakehouse_tables.table",
+                  "description": null,
+                  "children": [
+                    {
+                      "id": "84c220f1-385a-432a-ade1-f77901c2a702",
+                      "is_selected": true,
+                      "display_name": "ID06",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "339695fd-392b-4d2c-8570-faf51824713a",
+                      "is_selected": true,
+                      "display_name": "ED_Name",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "4c22e8ca-317b-41d5-8691-de9772c7040f",
+                      "is_selected": true,
+                      "display_name": "NUTS4",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "4661b903-e6fa-4889-a280-219c88862a1d",
+                      "is_selected": true,
+                      "display_name": "NUTS3",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "5f3bf11a-21ed-4a24-988b-d38c2df98dd2",
+                      "is_selected": true,
+                      "display_name": "NUTS2",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "fe02db7c-a29d-49eb-9553-746400c9f08f",
+                      "is_selected": true,
+                      "display_name": "NUTS1",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "ab487447-7ed0-4a70-8162-7be10a07cb6b",
+                      "is_selected": true,
+                      "display_name": "HP2006abs",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "e65f1b3f-e096-41fb-9202-9cc684708307",
+                      "is_selected": true,
+                      "display_name": "HP2011abs",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "2f07bd2c-fdea-4291-9840-acfedd3619db",
+                      "is_selected": true,
+                      "display_name": "HP2016abs",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "b30d1340-b152-42ac-aa77-4a9189a2093d",
+                      "is_selected": true,
+                      "display_name": "HP2006rel",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "b58b1f42-7478-4cee-8923-b5ddf5e3bccf",
+                      "is_selected": true,
+                      "display_name": "HP2011rel",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "803758f3-7b37-4aee-9241-caab6c5bf325",
+                      "is_selected": true,
+                      "display_name": "HP2016rel",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "7d8f99f2-bb4d-416a-91dd-c239daf49dc2",
+                      "is_selected": true,
+                      "display_name": "TOTPOP02",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "bef27b6c-1b6e-49fa-8c5c-2a80ec59ef90",
+                      "is_selected": true,
+                      "display_name": "TOTPOP06",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "4f495788-a164-4e17-8cc6-638f1722643e",
+                      "is_selected": true,
+                      "display_name": "TOTPOP11",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "9a41aac9-9bfa-4286-be14-5954b943be46",
+                      "is_selected": true,
+                      "display_name": "TOTPOP16",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "bc6552d2-b168-4a8d-9fdc-dd3b1ab2f554",
+                      "is_selected": true,
+                      "display_name": "popdep_T",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "adcf33f6-e63b-4a71-a7e4-c69158193961",
+                      "is_selected": true,
+                      "display_name": "popdep_L",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "d6425902-cf4d-47f3-a0d1-508b149bfd1a",
+                      "is_selected": true,
+                      "display_name": "popdep_M",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "f71f4d40-80b5-4772-9162-9cb636481f05",
+                      "is_selected": true,
+                      "display_name": "popdep_H",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "b54b99fe-08fd-467c-ab6c-70b6e5f838c3",
+                      "is_selected": true,
+                      "display_name": "share_T",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "64109a77-1de5-430f-8ca0-dd3c5b8211be",
+                      "is_selected": true,
+                      "display_name": "share_L",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "ce130ff3-7b13-4953-9cdb-0a8eb1510573",
+                      "is_selected": true,
+                      "display_name": "share_M",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "300ff6d2-9c47-44bf-8cea-e138bea7491e",
+                      "is_selected": true,
+                      "display_name": "share_H",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "51288dfd-be14-48cf-b042-d8088dce3562",
+                      "is_selected": true,
+                      "display_name": "share",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "78657a74-42ba-4a84-bc59-b5844375adac",
+                      "is_selected": true,
+                      "display_name": "POPCHG06",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "5e889668-d97c-4793-99fb-3682450dbec2",
+                      "is_selected": true,
+                      "display_name": "POPCHG11",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "e29d223a-da3a-46bf-96f7-6c0d78e0c7bc",
+                      "is_selected": true,
+                      "display_name": "POPCHG16",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "3700cb3d-76bb-46bd-8923-375fa7f5e935",
+                      "is_selected": true,
+                      "display_name": "AGEDEP06",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "7b22e6a7-80db-4f11-b0bb-a9bab8c1a3f4",
+                      "is_selected": true,
+                      "display_name": "AGEDEP11",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "e83ee312-d07c-4752-8080-cfb52958220e",
+                      "is_selected": true,
+                      "display_name": "AGEDEP16",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "8de46aa7-66df-44e1-bf3c-040ffa82bb7d",
+                      "is_selected": true,
+                      "display_name": "LONEPA06",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "fe03ae6c-1562-42ad-bf7d-91c5c417b1e1",
+                      "is_selected": true,
+                      "display_name": "LONEPA11",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "fe148508-2020-46ab-9d50-b8f655ee2add",
+                      "is_selected": true,
+                      "display_name": "LONEPA16",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "7330d164-7abe-488f-b398-c3628cb1dc0e",
+                      "is_selected": true,
+                      "display_name": "EDLOW_06",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "21eec34b-3c1e-442e-ac1b-970b042afc93",
+                      "is_selected": true,
+                      "display_name": "EDLOW_11",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "2d4daa81-c51b-4c73-adc4-a55b4cad071e",
+                      "is_selected": true,
+                      "display_name": "EDLOW_16",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "7c9071d7-ca25-4aad-9198-1583df1eb76d",
+                      "is_selected": true,
+                      "display_name": "EDHIGH06",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "724a718b-9459-496b-a470-f533b0cd29bb",
+                      "is_selected": true,
+                      "display_name": "EDHIGH11",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "8080a9e7-f691-44a8-a727-0f2c8fb697ae",
+                      "is_selected": true,
+                      "display_name": "EDHIGH16",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "9d2a04b3-a994-46e4-9215-981dda523304",
+                      "is_selected": true,
+                      "display_name": "HLPROF06",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "1f430f82-30ac-4d7b-8962-5f49479af118",
+                      "is_selected": true,
+                      "display_name": "HLPROF11",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "48fbdc31-d6d8-41ad-952c-5181830ead28",
+                      "is_selected": true,
+                      "display_name": "HLPROF16",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "426d70d7-278b-4fb3-8198-ddb0801ffa0b",
+                      "is_selected": true,
+                      "display_name": "LSKILL06",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "42bdc098-f8ae-4f46-bb2b-6474c7f64258",
+                      "is_selected": true,
+                      "display_name": "LSKILL11",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "d2fa0af6-8ad0-400e-8aae-108dc3836221",
+                      "is_selected": true,
+                      "display_name": "LSKILL16",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "ac3cf422-f68d-4039-9ffb-d1f1f744a98b",
+                      "is_selected": true,
+                      "display_name": "UNEMPM06",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "0c02e7d9-8cdf-49c8-bfe1-2693c4886de1",
+                      "is_selected": true,
+                      "display_name": "UNEMPM11",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "23611b43-4696-4871-b6b5-2f859f378c40",
+                      "is_selected": true,
+                      "display_name": "UNEMPM16",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "07e61d5c-e5f3-447b-b9e7-09d82d7e6595",
+                      "is_selected": true,
+                      "display_name": "UNEMPF06",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "f206c692-7273-44d3-9236-8c7df381033f",
+                      "is_selected": true,
+                      "display_name": "UNEMPF11",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "6d6fe63a-7792-4f36-9e49-6f97dbef1ac6",
+                      "is_selected": true,
+                      "display_name": "UNEMPF16",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "7483d02e-bdbd-4fb3-bccb-cab4e0ede464",
+                      "is_selected": true,
+                      "display_name": "PEROOM06",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "2f86ac60-5ee5-44ab-8397-7cdcff70ac52",
+                      "is_selected": true,
+                      "display_name": "PEROOM11",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "e9290191-23e8-4707-bbbf-08a1019c2154",
+                      "is_selected": true,
+                      "display_name": "PEROOM16",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "444bbb5c-e17a-46a4-a267-4520370f9c88",
+                      "is_selected": true,
+                      "display_name": "LARENT06",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "1ff30aae-e237-466c-95b2-568ac6bcbb56",
+                      "is_selected": true,
+                      "display_name": "LARENT11",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "b65f7901-0b83-497c-b45e-525989abf846",
+                      "is_selected": true,
+                      "display_name": "LARENT16",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "c1fe067f-bc5f-4591-acd2-b4ecf3a67972",
+                      "is_selected": true,
+                      "display_name": "PRRENT06",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "feaccfb7-62a2-4bd0-85eb-5c1e324465b2",
+                      "is_selected": true,
+                      "display_name": "PRRENT11",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "3e998530-174b-40de-b606-ae4abd0fbcc7",
+                      "is_selected": true,
+                      "display_name": "PRRENT16",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "dc472554-2f07-4847-ba8e-64852ae2d8d3",
+                      "is_selected": true,
+                      "display_name": "OHOUSE06",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "fd9ae276-0a9d-4dcf-9a6d-cedd9d9fb765",
+                      "is_selected": true,
+                      "display_name": "OHOUSE11",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "fe1409e0-b09c-4ece-b33a-db0e719b39b7",
+                      "is_selected": true,
+                      "display_name": "OHOUSE16",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "0770835e-f998-40b8-969a-b570cb554894",
+                  "is_selected": true,
+                  "display_name": "fact_sustainability_assessments",
+                  "type": "lakehouse_tables.table",
+                  "description": null,
+                  "children": [
+                    {
+                      "id": "41467003-921a-40e3-8529-1fb22370f80d",
+                      "is_selected": true,
+                      "display_name": "CountyName",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "b84e0ede-3be8-4ae4-9e5f-0181e513ae97",
+                      "is_selected": true,
+                      "display_name": "DwellingTypeDescr",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "6daf7b77-ae94-488f-a1fb-76a8e9e6839c",
+                      "is_selected": true,
+                      "display_name": "Year_of_Construction",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "6baa490b-125a-4644-9fa8-a48a61f05e14",
+                      "is_selected": true,
+                      "display_name": "TypeofRating",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "fd1020c7-b8a1-4015-88a6-8e2f58c5c81f",
+                      "is_selected": true,
+                      "display_name": "EnergyRating",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "6aa298fb-a327-41fc-8c17-cd7ce0cc2ca3",
+                      "is_selected": true,
+                      "display_name": "BerRating",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "b5ba334b-9e13-471d-9b37-9338f2111be0",
+                      "is_selected": true,
+                      "display_name": "GroundFloorArea_sq_m",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "9551ea7a-d28c-421b-a3c5-62cda7c5b713",
+                      "is_selected": true,
+                      "display_name": "UValueWall",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "fbf9b07b-50a7-4634-a012-dfabf5b30c73",
+                      "is_selected": true,
+                      "display_name": "UValueRoof",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "e67fd4e5-ca21-4914-a252-74a1978887b0",
+                      "is_selected": true,
+                      "display_name": "UValueFloor",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "b12f0bff-612a-485b-9c08-4a9bc8c50d46",
+                      "is_selected": true,
+                      "display_name": "UValueWindow",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "b613b159-8f52-4940-ac38-1696ae9d1ffb",
+                      "is_selected": true,
+                      "display_name": "UvalueDoor",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "8764b38f-1774-4c0f-81ec-683db0102f6d",
+                      "is_selected": true,
+                      "display_name": "WallArea",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "dcf39db5-11c1-4140-875c-e9c4ece8fe77",
+                      "is_selected": true,
+                      "display_name": "RoofArea",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "e8e81693-8a4e-4e5a-b6f9-e2e71f4bd075",
+                      "is_selected": true,
+                      "display_name": "FloorArea",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "6a900c7b-bd07-4db0-8d56-1f8fb54ffeb3",
+                      "is_selected": true,
+                      "display_name": "WindowArea",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "5c321852-b571-4886-bc33-56cdf1f42cc6",
+                      "is_selected": true,
+                      "display_name": "DoorArea",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "6c8e79a3-fc83-4f3d-ac5c-3ef7326004aa",
+                      "is_selected": true,
+                      "display_name": "NoStoreys",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "e5f5a341-ccde-4115-92d8-47febf2f192c",
+                      "is_selected": true,
+                      "display_name": "CO2Rating",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "452d4a6b-dd10-43b3-a7ae-029b690e1fd8",
+                      "is_selected": true,
+                      "display_name": "MainSpaceHeatingFuel",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "67265569-1d92-446a-8012-560a59281cd8",
+                      "is_selected": true,
+                      "display_name": "MainWaterHeatingFuel",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "852ddb61-700e-4f2d-a3f8-c7f72e7fd98c",
+                      "is_selected": true,
+                      "display_name": "HSMainSystemEfficiency",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "3ba4d790-127a-4faf-ad9c-1512b5e61f69",
+                      "is_selected": true,
+                      "display_name": "MultiDwellingMPRN",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "4ad14470-49df-467e-bafa-9ef4e1102085",
+                      "is_selected": true,
+                      "display_name": "TGDLEdition",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "fc9d94b3-89f5-435e-92f7-e2d5376210b4",
+                      "is_selected": true,
+                      "display_name": "MPCDERValue",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "37d78b82-119b-47c1-9497-a12adadb4963",
+                      "is_selected": true,
+                      "display_name": "HSEffAdjFactor",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "adaf6787-e9b5-49e8-8c03-47878acc17f9",
+                      "is_selected": true,
+                      "display_name": "HSSupplHeatFraction",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "29ec3e58-56f0-4326-99b6-194c7169dcc3",
+                      "is_selected": true,
+                      "display_name": "HSSupplSystemEff",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "926f4e6d-6d58-4dfd-a38e-72f7252777ac",
+                      "is_selected": true,
+                      "display_name": "WHMainSystemEff",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "f94f8c55-e74a-479a-81bb-edcfc7c4fdae",
+                      "is_selected": true,
+                      "display_name": "WHEffAdjFactor",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "fc02de96-c99c-4753-948b-d8ed8d8472f8",
+                      "is_selected": true,
+                      "display_name": "SupplSHFuel",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "76b5ad71-298d-40fc-9912-d12ff7b7f89c",
+                      "is_selected": true,
+                      "display_name": "SupplWHFuel",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "9915a9b1-bd74-4323-b847-45fd210de080",
+                      "is_selected": true,
+                      "display_name": "SHRenewableResources",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "5b944bae-5af5-46aa-986a-3c2958e61a02",
+                      "is_selected": true,
+                      "display_name": "WHRenewableResources",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "ec21d0b3-d654-40dc-8987-e8f67293d3f6",
+                      "is_selected": true,
+                      "display_name": "NoOfChimneys",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "20af5ad9-ec55-4f83-aff6-9cdb839bb58c",
+                      "is_selected": true,
+                      "display_name": "NoOfOpenFlues",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "a562d70c-3356-4284-8755-e697c18b59d5",
+                      "is_selected": true,
+                      "display_name": "NoOfFansAndVents",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "7903cf4c-a0bb-4bb5-9e96-b2a3bda6c02e",
+                      "is_selected": true,
+                      "display_name": "NoOfFluelessGasFires",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "e312ab3a-8ea0-4a14-a755-7ec6e3a69c73",
+                      "is_selected": true,
+                      "display_name": "DraftLobby",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "47709f9e-008d-4bcb-8230-2292a7872a35",
+                      "is_selected": true,
+                      "display_name": "VentilationMethod",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "abec96ce-0017-4d56-9af2-8a7ddc456952",
+                      "is_selected": true,
+                      "display_name": "FanPowerManuDeclaredValue",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "eecd69d1-2bfa-4784-8f96-b2233543e5f3",
+                      "is_selected": true,
+                      "display_name": "HeatExchangerEff",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "60549a13-5c75-452c-9fc3-bea5bc135fc2",
+                      "is_selected": true,
+                      "display_name": "StructureType",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "34db5da5-55d6-49ec-bcd4-c632bcb28dfa",
+                      "is_selected": true,
+                      "display_name": "SuspendedWoodenFloor",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "c79f870f-1de7-4ad8-a9ba-57dcbd3fa50b",
+                      "is_selected": true,
+                      "display_name": "PercentageDraughtStripped",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "f5e74a06-ef95-4243-b455-186d2b4c354a",
+                      "is_selected": true,
+                      "display_name": "NoOfSidesSheltered",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "ebfeeb73-2660-42ab-bbf2-150498b6a3d6",
+                      "is_selected": true,
+                      "display_name": "PermeabilityTest",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "4bde77af-7bf1-4fac-ac22-b51e4f73a679",
+                      "is_selected": true,
+                      "display_name": "PermeabilityTestResult",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "fc29a934-2625-46b0-adf8-23cdc992f339",
+                      "is_selected": true,
+                      "display_name": "TempAdjustment",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "d2fb5e9d-8e0d-4553-91b5-1f58e88d843f",
+                      "is_selected": true,
+                      "display_name": "HeatSystemControlCat",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "a4d64df4-a134-4ac2-9d17-0d0ea618e7eb",
+                      "is_selected": true,
+                      "display_name": "HeatSystemResponseCat",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "d2a53497-02e8-4518-a48d-d0e95fac2465",
+                      "is_selected": true,
+                      "display_name": "NoCentralHeatingPumps",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "881b2bab-460c-491e-8448-178e98dc98eb",
+                      "is_selected": true,
+                      "display_name": "CHBoilerThermostatControlled",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "2fe0a3b9-df01-41c9-a2d7-1f5e46fd10f0",
+                      "is_selected": true,
+                      "display_name": "NoOilBoilerHeatingPumps",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "41ccd1ac-c2e9-4d3e-aa28-fa2332ad4302",
+                      "is_selected": true,
+                      "display_name": "OBBoilerThermostatControlled",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "068a6ac0-f3ec-4c69-af4f-e545b5075ad2",
+                      "is_selected": true,
+                      "display_name": "OBPumpInsideDwelling",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "a44d6a50-53bd-4536-a7fe-0721413e123d",
+                      "is_selected": true,
+                      "display_name": "NoGasBoilerHeatingPumps",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "0e2ed55f-1be0-43ea-bfc9-03d22d4c2d36",
+                      "is_selected": true,
+                      "display_name": "WarmAirHeatingSystem",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "09146fc5-a375-43ba-b853-5cb9cbf99d49",
+                      "is_selected": true,
+                      "display_name": "UndergroundHeating",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "05b4fbd7-1ec0-4d95-9afe-b76b94172a3e",
+                      "is_selected": true,
+                      "display_name": "GroundFloorUValue",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "a06d8f75-056c-4dfb-878e-6c6c0e30310e",
+                      "is_selected": true,
+                      "display_name": "DistributionLosses",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "5b7b5c0f-0ca1-4158-b6c7-2050b4583751",
+                      "is_selected": true,
+                      "display_name": "StorageLosses",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "2c5d82a7-09a4-4c7b-84c6-934e82d06217",
+                      "is_selected": true,
+                      "display_name": "ManuLossFactorAvail",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "0a2dfa8b-8d06-4a4c-b9f9-89e462801d20",
+                      "is_selected": true,
+                      "display_name": "SolarHotWaterHeating",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "e9173c7c-bee0-49e1-b160-ee0f60095d39",
+                      "is_selected": true,
+                      "display_name": "ElecImmersionInSummer",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "aad065d0-48de-41d1-a724-94360fbc2477",
+                      "is_selected": true,
+                      "display_name": "CombiBoiler",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "f29cc0fd-0a68-4d94-888f-5749ff776358",
+                      "is_selected": true,
+                      "display_name": "KeepHotFacility",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "3a26a2e0-5390-4c48-8e55-a37cd292d78e",
+                      "is_selected": true,
+                      "display_name": "WaterStorageVolume",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "7d269426-3ff8-470e-a9b4-c18fe729a4e1",
+                      "is_selected": true,
+                      "display_name": "DeclaredLossFactor",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "6359add7-7e32-41b0-8135-bc5a4c4620bf",
+                      "is_selected": true,
+                      "display_name": "TempFactorUnadj",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "050b370d-5cdc-4a1e-9639-10bf67db2ffa",
+                      "is_selected": true,
+                      "display_name": "TempFactorMultiplier",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "d848e427-7742-42aa-b852-30f634d21d01",
+                      "is_selected": true,
+                      "display_name": "InsulationType",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "24bbabb1-3e1d-4925-91e2-881ea31fe441",
+                      "is_selected": true,
+                      "display_name": "InsulationThickness",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "6a07c634-56c4-47d8-b161-a51e2693f048",
+                      "is_selected": true,
+                      "display_name": "PrimaryCircuitLoss",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "fc92bf7f-46ea-4f4f-b95d-8bf159100d01",
+                      "is_selected": true,
+                      "display_name": "CombiBoilerAddLoss",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "c763d76d-2843-49b5-b2d1-fb886bb27d2e",
+                      "is_selected": true,
+                      "display_name": "ElecConsumpKeepHot",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "b3b327c2-f0ec-4838-ba3a-3c6ab7d88b18",
+                      "is_selected": true,
+                      "display_name": "ApertureArea",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "f797debb-cb64-4595-9385-b8d4eacf8ded",
+                      "is_selected": true,
+                      "display_name": "ZeroLossCollectorEff",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "009d0fdb-ed5c-405c-908b-d6cfd2210f8e",
+                      "is_selected": true,
+                      "display_name": "CollectorHeatLossCoEff",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "f60ef297-dce6-4e5d-af64-e627fce3b41c",
+                      "is_selected": true,
+                      "display_name": "AnnualSolarRadiation",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "2dd6c2d2-f3c9-4ad1-90e6-c76be161b4e0",
+                      "is_selected": true,
+                      "display_name": "OvershadingFactor",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "ff06f54f-ff15-4e53-9953-2dd58b6a47da",
+                      "is_selected": true,
+                      "display_name": "CylinderStat",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "3d4758fa-09e7-46f2-b158-466f4b88c135",
+                      "is_selected": true,
+                      "display_name": "SolarStorageVolume",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "051a6ae7-e205-451c-9ef5-c0ce52906554",
+                      "is_selected": true,
+                      "display_name": "VolumeOfPreHeatStore",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "ba832ba0-6f13-4d17-a5eb-69642ab1ce64",
+                      "is_selected": true,
+                      "display_name": "CombinedCylinder",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "25ea9862-f134-4e63-b71f-7afc08d45ea4",
+                      "is_selected": true,
+                      "display_name": "ElectricityConsumption",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "a5f1ecb1-a483-4f1d-a872-a4fb1a0bd186",
+                      "is_selected": true,
+                      "display_name": "SWHPumpSolarPowered",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "55d8e184-321e-419b-ac7a-44821a070145",
+                      "is_selected": true,
+                      "display_name": "ChargingBasisHeatConsumed",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "ff2d157c-703d-4a58-8d40-972e431766c0",
+                      "is_selected": true,
+                      "display_name": "gsdHSSupplHeatFraction",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "09040166-c493-49ac-870f-6ae8f47a4975",
+                      "is_selected": true,
+                      "display_name": "gsdHSSupplSystemEff",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "ef3b6f06-01e1-4bc0-ae10-4c4aea325baf",
+                      "is_selected": true,
+                      "display_name": "DistLossFactor",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "975ab130-f544-4e38-a2d2-7cc3b743cda7",
+                      "is_selected": true,
+                      "display_name": "CHPUnitHeatFraction",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "9b1543e9-7e83-4695-aa0e-2451fca960f2",
+                      "is_selected": true,
+                      "display_name": "CHPSystemType",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "08323c8c-28bc-4504-a469-9ab51bd48c04",
+                      "is_selected": true,
+                      "display_name": "CHPElecEff",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "0ad04fba-bc37-48ff-ad7d-96cf4f79144f",
+                      "is_selected": true,
+                      "display_name": "CHPHeatEff",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "580991f3-42f7-402b-9e76-8ab49ba6fcd0",
+                      "is_selected": true,
+                      "display_name": "CHPFuelType",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "47c80127-8bbd-4356-b0d8-1cab8b7cf1b7",
+                      "is_selected": true,
+                      "display_name": "SupplHSFuelTypeID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "d10eaf61-a839-4c08-a90b-c6096c40019d",
+                      "is_selected": true,
+                      "display_name": "gsdSHRenewableResources",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "1213b8cb-ec4b-4868-a2f2-1f5662e63d06",
+                      "is_selected": true,
+                      "display_name": "gsdWHRenewableResources",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "b88ff637-3d6e-44fe-95ce-a09e8e8e7c71",
+                      "is_selected": true,
+                      "display_name": "SolarHeatFraction",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "0ac582e0-3b55-4e51-a621-f2ccdcfc494c",
+                      "is_selected": true,
+                      "display_name": "DeliveredLightingEnergy",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "e6ff591e-9c2f-4774-a494-5cc93ffd8e6b",
+                      "is_selected": true,
+                      "display_name": "DeliveredEnergyPumpsFans",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "88fc4496-e50c-488b-8b11-23fe6698278f",
+                      "is_selected": true,
+                      "display_name": "DeliveredEnergyMainWater",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "105958ac-4556-477a-9aba-5892925343cb",
+                      "is_selected": true,
+                      "display_name": "DeliveredEnergyMainSpace",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "d539ef6a-d1c0-440f-b32d-9b730a2e8559",
+                      "is_selected": true,
+                      "display_name": "PrimaryEnergyLighting",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "aa4429ad-c72d-46d7-b785-5c52ce6f781f",
+                      "is_selected": true,
+                      "display_name": "PrimaryEnergyPumpsFans",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "52379a37-0a8e-4a05-a2fb-35f4a6401e25",
+                      "is_selected": true,
+                      "display_name": "PrimaryEnergyMainWater",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "cb76aec6-2586-4646-af33-0b890f9d2b82",
+                      "is_selected": true,
+                      "display_name": "PrimaryEnergyMainSpace",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "c5e602fe-5b8f-4f38-b25e-e7f1d34d09fe",
+                      "is_selected": true,
+                      "display_name": "CO2Lighting",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "1fc45a8e-c804-432a-9709-97b29b937a77",
+                      "is_selected": true,
+                      "display_name": "CO2PumpsFans",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "6207ad46-7dba-49b6-8e23-abad86013233",
+                      "is_selected": true,
+                      "display_name": "CO2MainWater",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "84a94087-b2ad-44bc-bd6f-a3d14b87fb21",
+                      "is_selected": true,
+                      "display_name": "CO2MainSpace",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "a457259b-b5aa-467f-b088-7a9e62c0bd46",
+                      "is_selected": true,
+                      "display_name": "GroundFloorArea",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "85010da7-b7b0-4262-a05a-91e01ff9e829",
+                      "is_selected": true,
+                      "display_name": "GroundFloorHeight",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "9525233e-a706-4df2-9747-3ed995f14024",
+                      "is_selected": true,
+                      "display_name": "FirstFloorArea",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "a13c279e-f7f6-4f50-8b2b-22a4f9628bc7",
+                      "is_selected": true,
+                      "display_name": "FirstFloorHeight",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "cd398861-3dcc-4d01-913a-86bdc0c598a5",
+                      "is_selected": true,
+                      "display_name": "SecondFloorArea",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "cd7f1243-2a39-4734-8f5f-132ed8ece5ac",
+                      "is_selected": true,
+                      "display_name": "SecondFloorHeight",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "dd3f001e-5acd-4b5b-ad82-32a752538ea9",
+                      "is_selected": true,
+                      "display_name": "ThirdFloorArea",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "18c5c306-72da-4f2e-ab1d-f202f8265a92",
+                      "is_selected": true,
+                      "display_name": "ThirdFloorHeight",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "8b859a58-00f1-47ae-802d-293d018538d6",
+                      "is_selected": true,
+                      "display_name": "ThermalBridgingFactor",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "4e684011-1a71-4a9b-863d-59b6ba05410b",
+                      "is_selected": true,
+                      "display_name": "ThermalMassCategory",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "7ac5d1a6-3a9c-4b32-9eab-6cd75a4c9ac8",
+                      "is_selected": true,
+                      "display_name": "PredominantRoofTypeArea",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "999fceb6-525d-4783-b52e-ce427f9cc95e",
+                      "is_selected": true,
+                      "display_name": "PredominantRoofType",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "1319635f-e3f2-454d-b996-a82b6c0cd834",
+                      "is_selected": true,
+                      "display_name": "LowEnergyLightingPercent",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "5cc851bf-4e4f-4c87-ae0b-e98c87ba8698",
+                      "is_selected": true,
+                      "display_name": "TotalDeliveredEnergy",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "170e42ff-944d-49d3-87c8-e0cd0c06d903",
+                      "is_selected": true,
+                      "display_name": "DeliveredEnergySecondarySpace",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "bc13a739-99cb-4329-87de-d0cbd56272e1",
+                      "is_selected": true,
+                      "display_name": "DeliveredEnergySupplementaryWater",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "b4e83c40-33d8-406d-b2c2-fae0fe4af954",
+                      "is_selected": true,
+                      "display_name": "LivingAreaPercent",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "828746fc-62ba-4979-a0b4-2f0f03993f19",
+                      "is_selected": true,
+                      "display_name": "CO2SecondarySpace",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "31650118-ae79-4618-a4af-6f385b2d5253",
+                      "is_selected": true,
+                      "display_name": "CO2SupplementaryWater",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "63b010fc-e571-455a-98eb-270cca1e69fe",
+                      "is_selected": true,
+                      "display_name": "PrimaryEnergySecondarySpace",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "a4061f8a-7e40-419c-80c6-eddadf657ed9",
+                      "is_selected": true,
+                      "display_name": "PrimaryEnergySupplementaryWater",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "6ca19567-c7e2-4dbf-8737-2b24e17950d1",
+                      "is_selected": true,
+                      "display_name": "HESSchemeUpgrade",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "c7134d62-b97f-48e7-bef2-54b352a638bd",
+                      "is_selected": true,
+                      "display_name": "RoomInRoofArea",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "35793d99-7ef3-4772-aa0a-869645ebe087",
+                      "is_selected": true,
+                      "display_name": "PurposeOfRating",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "1ed5be65-cd22-4baa-bbc7-ff7e15def148",
+                      "is_selected": true,
+                      "display_name": "DateOfAssessment",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "01476914-b0a8-4874-860f-8e28f1ac5920",
+                      "is_selected": true,
+                      "display_name": "FirstEnergyTypeId",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "fbfee315-a391-40d0-b02d-3bf3e0f90a35",
+                      "is_selected": true,
+                      "display_name": "FirstEnergyType_Description",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "8d843241-473b-4dc0-a319-33c7279cd47e",
+                      "is_selected": true,
+                      "display_name": "FirstEnerProdComment",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "538e96b9-a492-420d-b5a2-d1e0d95c28b8",
+                      "is_selected": true,
+                      "display_name": "FirstEnerProdDelivered",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "a29d5244-d77d-438f-b024-a665f9aafc13",
+                      "is_selected": true,
+                      "display_name": "FirstPartLTotalContribution",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "186c204b-1634-4237-9e85-09cad5e20092",
+                      "is_selected": true,
+                      "display_name": "FirstEnerProdConvFactor",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "c385d857-ffc7-4a7d-8c5e-bdafb2780ecc",
+                      "is_selected": true,
+                      "display_name": "FirstEnerProdCO2EmissionFactor",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "e1df1c59-ff81-48df-a856-01793e605b83",
+                      "is_selected": true,
+                      "display_name": "FirstEnerConsumedComment",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "b0418910-394e-4cdb-a973-d800f9b90c3e",
+                      "is_selected": true,
+                      "display_name": "FirstEnerConsumedDelivered",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "9925afa2-9131-4c47-bd87-5c6e193da344",
+                      "is_selected": true,
+                      "display_name": "FirstEnerConsumedConvFactor",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "d2e765ec-666e-4a1e-9904-610cd27d011a",
+                      "is_selected": true,
+                      "display_name": "FirstEnerConsumedCO2EmissionFactor",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "7f08d68c-9757-43a9-b7f3-75c5ae365e26",
+                      "is_selected": true,
+                      "display_name": "SecondEnergyTypeId",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "4a05fcc4-2edd-4234-88ff-6729b0a31adb",
+                      "is_selected": true,
+                      "display_name": "SecondEnergyType_Description",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "4c5fad6e-1b4a-45f6-9c51-277627383bb0",
+                      "is_selected": true,
+                      "display_name": "SecondEnerProdComment",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "487747a0-701f-4204-8ef9-66b370a15f53",
+                      "is_selected": true,
+                      "display_name": "SecondEnerProdDelivered",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "80eeb0a7-48fa-4b01-886b-0e1206c72547",
+                      "is_selected": true,
+                      "display_name": "SecondPartLTotalContribution",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "1794cd2d-58b9-41f5-930c-25f1f37ce059",
+                      "is_selected": true,
+                      "display_name": "SecondEnerProdConvFactor",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "f4d8ec89-e8d9-4cb3-9cf5-37d4a4466a39",
+                      "is_selected": true,
+                      "display_name": "SecondEnerProdCO2EmissionFactor",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "2a9eeb37-71d7-4a77-9749-67be64d0e5a8",
+                      "is_selected": true,
+                      "display_name": "SecondEnerConsumedComment",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "a92815ac-3d6c-4a4e-8ea0-dd395672c80f",
+                      "is_selected": true,
+                      "display_name": "SecondEnerConsumedDelivered",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "5f04024b-5def-45ff-bbff-a9541c6759b5",
+                      "is_selected": true,
+                      "display_name": "SecondEnerConsumedConvFactor",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "50f2111b-ade9-45fa-a5e2-8f513413cf64",
+                      "is_selected": true,
+                      "display_name": "SecondEnerConsumedCO2EmissionFactor",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "032d1752-971e-436d-ab04-4ded0424a74c",
+                      "is_selected": true,
+                      "display_name": "ThirdEnergyTypeId",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "519f4180-047d-4d87-80ad-3bc90b0036ae",
+                      "is_selected": true,
+                      "display_name": "ThirdEnergyType_Description",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "b3f04a4b-b25d-4653-89bf-2ef5924f950a",
+                      "is_selected": true,
+                      "display_name": "ThirdEnerProdComment",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "7d81d7b6-0d64-45c4-86e9-3fcf05eca50b",
+                      "is_selected": true,
+                      "display_name": "ThirdEnerProdDelivered",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "0aef2c6f-8126-47ef-b1a7-77954a0d2b92",
+                      "is_selected": true,
+                      "display_name": "ThirdPartLTotalContribution",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "c39f03a2-5d1f-43bd-8bc4-3d39aa179028",
+                      "is_selected": true,
+                      "display_name": "ThirdEnerProdConvFactor",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "f3fea80b-b8d8-4c94-9398-001304f7031a",
+                      "is_selected": true,
+                      "display_name": "ThirdEnerProdCO2EmissionFactor",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "7d9d2e5e-2c1b-456f-814f-97f81c9ad28a",
+                      "is_selected": true,
+                      "display_name": "ThirdEnerConsumedComment",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "792456ed-97a9-4147-9880-6793dfa76f21",
+                      "is_selected": true,
+                      "display_name": "ThirdEnerConsumedDelivered",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "00760269-a811-41bb-b959-d117cbac9e13",
+                      "is_selected": true,
+                      "display_name": "ThirdEnerConsumedConvFactor",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "9e2d5050-0ad2-4d70-b36b-fb218d142a53",
+                      "is_selected": true,
+                      "display_name": "ThirdEnerConsumedCO2EmissionFactor",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "47a8fb73-b254-4661-981a-0fdb2cdedae4",
+                      "is_selected": true,
+                      "display_name": "FirstBoilerFuelType",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "410d2152-d64b-45f8-a722-68acc2ed93de",
+                      "is_selected": true,
+                      "display_name": "FirstHeatGenPlantEff",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "103e35b8-45f7-436f-9543-8dae0422948a",
+                      "is_selected": true,
+                      "display_name": "FirstPercentageHeat",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "5531e09a-0376-40cd-bc79-487efd7d94ff",
+                      "is_selected": true,
+                      "display_name": "SecondBoilerFuelType",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "551791bf-ffeb-419d-90ae-efe4ebb7f1d3",
+                      "is_selected": true,
+                      "display_name": "SecondHeatGenPlantEff",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "c3706c32-60fb-49c6-b22e-eaa7c01f20ca",
+                      "is_selected": true,
+                      "display_name": "SecondPercentageHeat",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "c26acea3-108f-457d-a9b7-fcd75817dcd5",
+                      "is_selected": true,
+                      "display_name": "ThirdBoilerFuelType",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "0567fd44-2b09-4779-8857-40feceea0cda",
+                      "is_selected": true,
+                      "display_name": "ThirdHeatGenPlantEff",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "7a3841ff-9c83-4ec2-b4e0-8f5bb1ea3c4a",
+                      "is_selected": true,
+                      "display_name": "ThirdPercentageHeat",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "cec12fa9-6f39-4ab6-bc9e-2b596f9cbbc5",
+                      "is_selected": true,
+                      "display_name": "SolarSpaceHeatingSystem",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "310a07dc-a6c4-4e35-8262-4532c26084d1",
+                      "is_selected": true,
+                      "display_name": "TotalPrimaryEnergyFact",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "414f1e5b-b355-4e77-b789-3e8758392caf",
+                      "is_selected": true,
+                      "display_name": "TotalCO2Emissions",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "ac607b55-e231-4771-ab2d-a673bb5e7b28",
+                      "is_selected": true,
+                      "display_name": "FirstWallType_Description",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "2bad4b51-f7c7-4e81-a2c7-0490ee517de6",
+                      "is_selected": true,
+                      "display_name": "FirstWallDescription",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "f3909a8c-1931-43f9-8e11-b4f3a3c8522e",
+                      "is_selected": true,
+                      "display_name": "FirstWallArea",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "f9c149c4-ef92-4bd4-85ba-940ae1c2bb9b",
+                      "is_selected": true,
+                      "display_name": "FirstWallUValue",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "8c5b5c37-24ca-49cd-9a53-59d49647e63d",
+                      "is_selected": true,
+                      "display_name": "FirstWallIsSemiExposed",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "c8f0a0c6-2d3a-46d4-9afd-5f98d90fef1c",
+                      "is_selected": true,
+                      "display_name": "FirstWallAgeBandId",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "76b99f91-1531-48ec-9d15-90ddcdc262b7",
+                      "is_selected": true,
+                      "display_name": "FirstWallTypeId",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "2483962b-f485-4c9f-a80b-1c72494fc7e3",
+                      "is_selected": true,
+                      "display_name": "SecondWallType_Description",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "9d1ef2b6-c4a1-4bf6-9402-9f816bd46759",
+                      "is_selected": true,
+                      "display_name": "SecondWallDescription",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "e385f37a-3833-41b3-838c-4166dd711327",
+                      "is_selected": true,
+                      "display_name": "SecondWallArea",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "6cc2d9aa-af3e-4020-ac8b-76f109ab526f",
+                      "is_selected": true,
+                      "display_name": "SecondWallUValue",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "21e12e6c-2a0a-4577-85e0-5fb86621615a",
+                      "is_selected": true,
+                      "display_name": "SecondWallIsSemiExposed",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "9ed19ac8-4334-4759-a5d6-715e6bdec746",
+                      "is_selected": true,
+                      "display_name": "SecondWallAgeBandId",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "6f04bc2d-2c00-43dc-97bb-5a310e80fdd2",
+                      "is_selected": true,
+                      "display_name": "SecondWallTypeId",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "9fa47192-3feb-4c1d-ae37-d2b7d09b0909",
+                      "is_selected": true,
+                      "display_name": "ThirdWallType_Description",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "f5da477e-5086-46ad-abcf-338f7851f12f",
+                      "is_selected": true,
+                      "display_name": "ThirdWallDescription",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "7a2aca16-e83a-431f-b69a-96fee2aae2c2",
+                      "is_selected": true,
+                      "display_name": "ThirdWallArea",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "ad0c64aa-613b-4ef1-afa6-b76f6a892e9b",
+                      "is_selected": true,
+                      "display_name": "ThirdWallUValue",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "f6a6ade8-1855-4072-a6b4-713dc525d470",
+                      "is_selected": true,
+                      "display_name": "ThirdWallIsSemiExposed",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "0d873bed-4cd0-4c49-9ec1-70d31f75de93",
+                      "is_selected": true,
+                      "display_name": "ThirdWallAgeBandId",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "16bc06e1-9245-4c63-a594-edfec46bcb9d",
+                      "is_selected": true,
+                      "display_name": "ThirdWallTypeId",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "1661cbe0-79a6-4813-b0b8-c6a5c46853bd",
+                      "is_selected": true,
+                      "display_name": "SA_Code",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "a5ad060d-964f-49b6-8c55-2267a4d43b45",
+                      "is_selected": true,
+                      "display_name": "prob_smarea_error_0corr",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "a345186b-af9c-4c43-8f0c-57a7144680ad",
+                      "is_selected": true,
+                      "display_name": "prob_smarea_error_100corr",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "e29e3fb5-39c8-464b-a0ee-6e234eef2bd6",
+                      "is_selected": true,
+                      "display_name": "RER",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "2a87f03d-6d44-43e3-bc09-e86f812f1e8f",
+                      "is_selected": true,
+                      "display_name": "RenewEPnren",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "6ad12d46-9b50-45c8-bbf0-9e6ab42b05af",
+                      "is_selected": true,
+                      "display_name": "RenewEPren",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "f6740598-7780-4f11-b652-9a56d1eabdf2",
+                      "is_selected": true,
+                      "display_name": "CPC",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "b717a2d4-776d-4eb3-8fe1-dea5f8f40539",
+                      "is_selected": true,
+                      "display_name": "EPC",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "1f9fcb19-a82c-4b3a-b743-ed8dde6eb029",
+                      "is_selected": true,
+                      "display_name": "ingestion_timestamp",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "datetime2",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "5c140e72-e39f-4f8b-8349-5b89d7f96061",
+                      "is_selected": true,
+                      "display_name": "source_lineage_file",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "29bd9006-829d-4039-bb8a-7b1474efbf12",
+                      "is_selected": true,
+                      "display_name": "pipeline_execution_layer",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "88c700bb-11da-464e-af4d-3da1fc1dc360",
+                      "is_selected": true,
+                      "display_name": "GeographyKey",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "3100bf2a-6eda-48df-9263-068c2a24ada3",
+                      "is_selected": true,
+                      "display_name": "AgeKey",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "40b6321f-12b5-4a36-a163-e3203ae81ecf",
+                      "is_selected": true,
+                      "display_name": "Energy_Intensity_Per_SqM",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "417fd428-960f-4596-aa1d-7258a0fffec1",
+                      "is_selected": true,
+                      "display_name": "Updated_Energy_Rating",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "8d7b7ed8-d33b-49d5-b1ef-78eccff3df55",
+                  "is_selected": true,
+                  "display_name": "dim_construction_era",
+                  "type": "lakehouse_tables.table",
+                  "description": null,
+                  "children": [
+                    {
+                      "id": "f27e5802-fe3e-4f79-a5cb-9d639b807165",
+                      "is_selected": true,
+                      "display_name": "AgeKey",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "d28248c3-b95c-42f1-94f4-dfad3ff63276",
+                      "is_selected": true,
+                      "display_name": "Year_of_Construction",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "8352bb90-9628-4f1f-94b9-9eff85b0923e",
+                      "is_selected": true,
+                      "display_name": "Construction_Era",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "83eb4d25-9bbf-47e4-ad83-b8472aca173e",
+                  "is_selected": true,
+                  "display_name": "dim_small_area_mapping",
+                  "type": "lakehouse_tables.table",
+                  "description": null,
+                  "children": [
+                    {
+                      "id": "ebb5afcc-40d7-4de8-89cd-eb2ade2b17a4",
+                      "is_selected": true,
+                      "display_name": "SA_PUB2011",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "fb9ad914-678d-4f8e-8e3a-78adc666222d",
+                      "is_selected": true,
+                      "display_name": "SA_PUB2016",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "ccf33b4f-3e6c-4549-b9ec-ec21ccc58db4",
+                      "is_selected": true,
+                      "display_name": "SA_PUB2022",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "0f9a355f-8a34-46f4-80f6-2dcba096f420",
+                      "is_selected": true,
+                      "display_name": "SA_GEOGID_2022",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "227a5f38-68f7-4709-b8c2-0d9afa5ae294",
+                      "is_selected": true,
+                      "display_name": "SA_CHANGE_CODE",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "2f0a34af-3dfe-4bce-9567-68ca770d8519",
+                      "is_selected": true,
+                      "display_name": "SA_URBAN_AREA_FLAG",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "025ce01c-e74f-4cf7-abf9-af4fb95cc1de",
+                      "is_selected": true,
+                      "display_name": "SA_URBAN_AREA_NAME",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "812c7102-50ad-4fd7-857c-9885743d3225",
+                      "is_selected": true,
+                      "display_name": "ED_OFFICIAL",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "b058964d-3d21-4341-acb4-0da75c62e854",
+                      "is_selected": true,
+                      "display_name": "ED_ENGLISH",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "807721da-f0e7-4e36-8dd8-8de9c842db20",
+                      "is_selected": true,
+                      "display_name": "ED_ID_STR",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "5b28223b-b799-4de8-b148-0a5670802481",
+                      "is_selected": true,
+                      "display_name": "ED_PART_COUNT",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "5889b01e-c958-40ff-9467-b4f040bc749f",
+                      "is_selected": true,
+                      "display_name": "COUNTY_CODE",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "f9e71c04-d98c-44a4-8cd4-c4de635d7a27",
+                      "is_selected": true,
+                      "display_name": "COUNTY_ENGLISH",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "d5014fe0-95b8-4d35-9e02-cad2b28756b5",
+                  "is_selected": true,
+                  "display_name": "dim_geography",
+                  "type": "lakehouse_tables.table",
+                  "description": null,
+                  "children": [
+                    {
+                      "id": "f579c829-b521-48c2-bfef-6f4d1ce8c573",
+                      "is_selected": true,
+                      "display_name": "GeographyKey",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "bb0bb90c-aaa9-4068-a77b-aa6ca37450c1",
+                      "is_selected": true,
+                      "display_name": "CountyName",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/dataAgent/definition/publishInfo/1.0.0/schema.json",
+  "description": "I am a Fabric Data Agent specializing in municipal assets and energy performance analytics, delivering insights on council-owned buildings, floor areas, and BER ratings to support sustainability strategies."
+}

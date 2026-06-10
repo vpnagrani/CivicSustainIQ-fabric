@@ -1,0 +1,85 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/dataAgent/definition/fewShots/1.0.0/schema.json",
+  "fewShots": [
+    {
+      "id": "7c02aab5-c130-4ba3-bf83-494210a40486",
+      "question": "What is the average BER rating for dwellings in Cork?",
+      "query": "SELECT g.CountyName, ROUND(AVG(f.BerRating), 2) AS Avg_BerRating, COUNT(*) AS Total_Assessments FROM [lh_sustainability_gold].[dbo].[fact_sustainability_assessments] f LEFT JOIN [lh_sustainability_gold].[dbo].[dim_geography] g ON f.GeographyKey = g.GeographyKey WHERE g.CountyName = 'Cork' GROUP BY g.CountyName;"
+    },
+    {
+      "id": "2c8cf920-da4d-4c93-ad78-4e1efa45505b",
+      "question": "Which county has the worst average energy performance?",
+      "query": "SELECT g.CountyName, ROUND(AVG(f.BerRating), 2) AS Avg_BerRating, COUNT(*) AS Total_Assessments FROM [lh_sustainability_gold].[dbo].[fact_sustainability_assessments] f LEFT JOIN [lh_sustainability_gold].[dbo].[dim_geography] g ON f.GeographyKey = g.GeographyKey GROUP BY g.CountyName ORDER BY Avg_BerRating DESC;"
+    },
+    {
+      "id": "fa17d32d-0930-4ba6-b35a-99007a5dec9b",
+      "question": "Which county has the best average energy performance?",
+      "query": "SELECT g.CountyName, ROUND(AVG(f.BerRating), 2) AS Avg_BerRating, COUNT(*) AS Total_Assessments FROM [lh_sustainability_gold].[dbo].[fact_sustainability_assessments] f LEFT JOIN [lh_sustainability_gold].[dbo].[dim_geography] g ON f.GeographyKey = g.GeographyKey GROUP BY g.CountyName ORDER BY Avg_BerRating ASC;"
+    },
+    {
+      "id": "9a0c1d5b-ad60-4655-8a45-dab0fd517c45",
+      "question": "How many dwellings built between 1940 and 1960 have a BER rating below 150?",
+      "query": "SELECT c.Construction_Era, COUNT(*) AS Dwelling_Count FROM [lh_sustainability_gold].[dbo].[fact_sustainability_assessments] f LEFT JOIN [lh_sustainability_gold].[dbo].[dim_construction_era] c ON f.AgeKey = c.AgeKey WHERE c.Year_of_Construction BETWEEN 1940 AND 1960 AND f.BerRating < 150 GROUP BY c.Construction_Era ORDER BY c.Construction_Era;"
+    },
+    {
+      "id": "c4ec643f-0c45-4d93-8950-38191858a2b9",
+      "question": "What proportion of dwellings in the most deprived areas have a BER rating above 300?",
+      "query": "SELECT d.ED_Name, d.NUTS4 AS County, COUNT(*) AS Total_Dwellings, SUM(CASE WHEN f.BerRating > 300 THEN 1 ELSE 0 END) AS High_BER_Count, ROUND(100.0 * SUM(CASE WHEN f.BerRating > 300 THEN 1 ELSE 0 END) / NULLIF(COUNT(*), 0), 1) AS High_BER_Pct FROM [lh_sustainability_gold].[dbo].[fact_sustainability_assessments] f LEFT JOIN [lh_sustainability_gold].[dbo].[dim_small_area_mapping] sam ON f.SA_Code = sam.SA_PUB2016 LEFT JOIN [lh_sustainability_gold].[dbo].[dim_deprivation_index] d ON sam.ED_ENGLISH = d.ED_Name WHERE d.share >= 0.5 GROUP BY d.ED_Name, d.NUTS4 ORDER BY High_BER_Pct DESC;"
+    },
+    {
+      "id": "e33896b5-58bd-4250-bc10-83a60f106710",
+      "question": "Show me the average CO2 emissions per county ranked from worst to best.",
+      "query": "SELECT g.CountyName, ROUND(AVG(f.CO2Rating), 2) AS Avg_CO2_kg_m2_yr, COUNT(*) AS Assessments FROM [lh_sustainability_gold].[dbo].[fact_sustainability_assessments] f LEFT JOIN [lh_sustainability_gold].[dbo].[dim_geography] g ON f.GeographyKey = g.GeographyKey GROUP BY g.CountyName ORDER BY Avg_CO2_kg_m2_yr DESC;"
+    },
+    {
+      "id": "72702770-1c31-498f-bbd4-4fed0a384f9f",
+      "question": "How has the average BER rating changed year-over-year across all of Ireland?",
+      "query": "SELECT YEAR(f.DateOfAssessment) AS Assessment_Year, ROUND(AVG(f.BerRating), 2) AS Avg_BerRating, ROUND(MIN(f.BerRating), 2) AS Min_BerRating, ROUND(MAX(f.BerRating), 2) AS Max_BerRating, COUNT(*) AS Assessments_That_Year FROM [lh_sustainability_gold].[dbo].[fact_sustainability_assessments] f WHERE f.DateOfAssessment IS NOT NULL GROUP BY YEAR(f.DateOfAssessment) ORDER BY Assessment_Year ASC;"
+    },
+    {
+      "id": "ef6c7681-a113-4234-9acc-77b74f4b7596",
+      "question": "Which dwelling types have the best and worst average energy intensity per square metre?",
+      "query": "SELECT f.DwellingTypeDescr, ROUND(AVG(f.Energy_Intensity_Per_SqM), 2) AS Avg_Energy_Intensity, ROUND(AVG(f.BerRating), 2) AS Avg_BerRating, COUNT(*) AS Count FROM [lh_sustainability_gold].[dbo].[fact_sustainability_assessments] f WHERE f.Energy_Intensity_Per_SqM IS NOT NULL GROUP BY f.DwellingTypeDescr ORDER BY Avg_Energy_Intensity ASC;"
+    },
+    {
+      "id": "d44b7de1-3f93-48d0-b930-19676131a27b",
+      "question": "What is the average BER rating improvement for dwellings that received an SEAI upgrade?",
+      "query": "SELECT COUNT(*) AS Total_Upgraded, ROUND(AVG(f.BerRating), 2) AS Avg_BerRating_Before, ROUND(AVG(CAST(f.Updated_Energy_Rating AS DECIMAL(10,2))), 2) AS Avg_BerRating_After, ROUND(AVG(f.BerRating - CAST(f.Updated_Energy_Rating AS DECIMAL(10,2))), 2) AS Avg_Improvement FROM [lh_sustainability_gold].[dbo].[fact_sustainability_assessments] f WHERE f.HESSchemeUpgrade = 1 AND f.Updated_Energy_Rating IS NOT NULL;"
+    },
+    {
+      "id": "b9ce348e-b5e1-466a-b1c1-c778ac0c37ae",
+      "question": "Is there a relationship between deprivation level and average BER rating at electoral division level?",
+      "query": "SELECT d.ED_Name, d.NUTS4 AS County, ROUND(d.share, 3) AS Deprivation_Share, ROUND(AVG(f.BerRating), 2) AS Avg_BerRating, ROUND(MIN(f.BerRating), 2) AS Min_BerRating, ROUND(MAX(f.BerRating), 2) AS Max_BerRating, COUNT(*) AS Total_Assessments FROM [lh_sustainability_gold].[dbo].[fact_sustainability_assessments] f LEFT JOIN [lh_sustainability_gold].[dbo].[dim_small_area_mapping] sam ON f.SA_Code = sam.SA_PUB2016 LEFT JOIN [lh_sustainability_gold].[dbo].[dim_deprivation_index] d ON sam.ED_ENGLISH = d.ED_Name WHERE d.share IS NOT NULL GROUP BY d.ED_Name, d.NUTS4, d.share HAVING COUNT(*) >= 10 ORDER BY d.share DESC;"
+    },
+    {
+      "id": "c8672ee0-7996-4060-aa50-be99ab369f39",
+      "question": "What are the top 10 small areas in Dublin with the highest average CO2 emissions?",
+      "query": "SELECT TOP 10 sam.SA_PUB2016 AS Small_Area_Code, sam.ED_ENGLISH AS Electoral_Division, sam.COUNTY_ENGLISH AS County, ROUND(AVG(f.CO2Rating), 2) AS Avg_CO2_kg_m2_yr, COUNT(*) AS Assessments FROM [lh_sustainability_gold].[dbo].[fact_sustainability_assessments] f LEFT JOIN [lh_sustainability_gold].[dbo].[dim_small_area_mapping] sam ON f.SA_Code = sam.SA_PUB2016 WHERE sam.COUNTY_ENGLISH LIKE '%Dublin%' AND f.CO2Rating IS NOT NULL GROUP BY sam.SA_PUB2016, sam.ED_ENGLISH, sam.COUNTY_ENGLISH HAVING COUNT(*) >= 5 ORDER BY Avg_CO2_kg_m2_yr DESC;"
+    },
+    {
+      "id": "5377cffc-7e79-4b68-8fa7-b5f5236a9357",
+      "question": "What is the breakdown of main space heating fuel types across all Irish dwellings?",
+      "query": "SELECT f.MainSpaceHeatingFuel, COUNT(*) AS Dwelling_Count, ROUND(100.0 * COUNT(*) / SUM(COUNT(*)) OVER(), 1) AS Pct_of_Total, ROUND(AVG(f.BerRating), 2) AS Avg_BerRating FROM [lh_sustainability_gold].[dbo].[fact_sustainability_assessments] f WHERE f.MainSpaceHeatingFuel IS NOT NULL GROUP BY f.MainSpaceHeatingFuel ORDER BY Dwelling_Count DESC;"
+    },
+    {
+      "id": "694dbafb-27c5-4fc4-9ca0-af7c38914f87",
+      "question": "Compare pre-1919 and post-2000 dwellings in terms of wall U-values and average BER rating.",
+      "query": "SELECT CASE WHEN c.Year_of_Construction < 1919 THEN 'Pre-1919' WHEN c.Year_of_Construction > 2000 THEN 'Post-2000' END AS Era_Group, ROUND(AVG(f.UValueWall), 3) AS Avg_UValue_Wall, ROUND(AVG(f.UValueRoof), 3) AS Avg_UValue_Roof, ROUND(AVG(f.UValueWindow), 3) AS Avg_UValue_Window, ROUND(AVG(f.BerRating), 2) AS Avg_BerRating, COUNT(*) AS Total FROM [lh_sustainability_gold].[dbo].[fact_sustainability_assessments] f LEFT JOIN [lh_sustainability_gold].[dbo].[dim_construction_era] c ON f.AgeKey = c.AgeKey WHERE c.Year_of_Construction < 1919 OR c.Year_of_Construction > 2000 GROUP BY CASE WHEN c.Year_of_Construction < 1919 THEN 'Pre-1919' WHEN c.Year_of_Construction > 2000 THEN 'Post-2000' END ORDER BY Era_Group;"
+    },
+    {
+      "id": "433e5ccb-2dee-494f-963a-d4aa52e33efc",
+      "question": "How does average BER rating compare between urban and rural dwellings?",
+      "query": "SELECT CASE WHEN sam.SA_URBAN_AREA_FLAG = 1 THEN 'Urban' ELSE 'Rural' END AS Area_Type, ROUND(AVG(f.BerRating), 2) AS Avg_BerRating, ROUND(AVG(f.CO2Rating), 2) AS Avg_CO2_kg_m2_yr, COUNT(*) AS Total_Assessments FROM [lh_sustainability_gold].[dbo].[fact_sustainability_assessments] f LEFT JOIN [lh_sustainability_gold].[dbo].[dim_small_area_mapping] sam ON f.SA_Code = sam.SA_PUB2016 WHERE sam.SA_URBAN_AREA_FLAG IS NOT NULL GROUP BY CASE WHEN sam.SA_URBAN_AREA_FLAG = 1 THEN 'Urban' ELSE 'Rural' END ORDER BY Avg_BerRating ASC;"
+    },
+    {
+      "id": "679813ce-2017-45f1-a05e-390f093c3243",
+      "question": "Which counties have the highest proportion of dwellings with solar hot water heating?",
+      "query": "SELECT g.CountyName, COUNT(*) AS Total_Assessments, SUM(CASE WHEN f.SolarHotWaterHeating = 1 THEN 1 ELSE 0 END) AS Solar_HW_Count, ROUND(100.0 * SUM(CASE WHEN f.SolarHotWaterHeating = 1 THEN 1 ELSE 0 END) / NULLIF(COUNT(*), 0), 1) AS Solar_HW_Pct, ROUND(AVG(f.BerRating), 2) AS Avg_BerRating FROM [lh_sustainability_gold].[dbo].[fact_sustainability_assessments] f LEFT JOIN [lh_sustainability_gold].[dbo].[dim_geography] g ON f.GeographyKey = g.GeographyKey GROUP BY g.CountyName ORDER BY Solar_HW_Pct DESC;"
+    },
+    {
+      "id": "7c23f803-750b-43a3-b861-283a78ccfe2c",
+      "question": "Show the average BER rating broken down by both county and construction era.",
+      "query": "SELECT g.CountyName, c.Construction_Era, ROUND(AVG(f.BerRating), 2) AS Avg_BerRating, ROUND(MIN(f.BerRating), 2) AS Min_BerRating, ROUND(MAX(f.BerRating), 2) AS Max_BerRating, COUNT(*) AS Assessments FROM [lh_sustainability_gold].[dbo].[fact_sustainability_assessments] f LEFT JOIN [lh_sustainability_gold].[dbo].[dim_geography] g ON f.GeographyKey = g.GeographyKey LEFT JOIN [lh_sustainability_gold].[dbo].[dim_construction_era] c ON f.AgeKey = c.AgeKey GROUP BY g.CountyName, c.Construction_Era ORDER BY g.CountyName, c.Construction_Era;"
+    }
+  ]
+}

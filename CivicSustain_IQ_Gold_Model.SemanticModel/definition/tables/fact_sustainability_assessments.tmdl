@@ -1,0 +1,2465 @@
+table fact_sustainability_assessments
+	lineageTag: c2ddc5f2-6dc5-497b-9e68-f83cfa897308
+	sourceLineageTag: [dbo].[fact_sustainability_assessments]
+
+	column CountyName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 78af5070-b897-4b8f-adbb-dcd9300a11eb
+		sourceLineageTag: CountyName
+		summarizeBy: none
+		sourceColumn: CountyName
+
+		annotation SummarizationSetBy = Automatic
+
+	column DwellingTypeDescr
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 2a364eaa-768a-4795-9b56-c8d1a2bb12bf
+		sourceLineageTag: DwellingTypeDescr
+		summarizeBy: none
+		sourceColumn: DwellingTypeDescr
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year_of_Construction
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 376d9ec8-4a5b-4c33-905f-c701cc8fe1d7
+		sourceLineageTag: Year_of_Construction
+		summarizeBy: sum
+		sourceColumn: Year_of_Construction
+
+		annotation SummarizationSetBy = Automatic
+
+	column TypeofRating
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 13c77864-4a9e-4dd5-87ad-098695c65c4d
+		sourceLineageTag: TypeofRating
+		summarizeBy: none
+		sourceColumn: TypeofRating
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnergyRating
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 8568a5fb-7eab-43d7-a937-e73a787f9a01
+		sourceLineageTag: EnergyRating
+		summarizeBy: none
+		sourceColumn: EnergyRating
+
+		annotation SummarizationSetBy = Automatic
+
+	column BerRating
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 71082ab6-4b1a-4ba6-8781-dc3856a67e89
+		sourceLineageTag: BerRating
+		summarizeBy: sum
+		sourceColumn: BerRating
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GroundFloorArea_sq_m
+		dataType: double
+		sourceProviderType: float
+		lineageTag: c51a4d05-6262-4530-bbf9-807f65e6e45e
+		sourceLineageTag: GroundFloorArea_sq_m
+		summarizeBy: sum
+		sourceColumn: GroundFloorArea_sq_m
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UValueWall
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 8cbb47ed-5cd6-41b7-ae9d-5db189089f6e
+		sourceLineageTag: UValueWall
+		summarizeBy: sum
+		sourceColumn: UValueWall
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UValueRoof
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 2a9d53bd-eb6b-4ed5-9db2-9961bf733795
+		sourceLineageTag: UValueRoof
+		summarizeBy: sum
+		sourceColumn: UValueRoof
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UValueFloor
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 88f508d1-9205-48a5-b943-5f30298c1cde
+		sourceLineageTag: UValueFloor
+		summarizeBy: sum
+		sourceColumn: UValueFloor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UValueWindow
+		dataType: double
+		sourceProviderType: float
+		lineageTag: b9ffe52b-7c80-42bd-8ef1-ed6be7e54917
+		sourceLineageTag: UValueWindow
+		summarizeBy: sum
+		sourceColumn: UValueWindow
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UvalueDoor
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 80ddfb5b-e26b-47ae-9409-ba9841b27511
+		sourceLineageTag: UvalueDoor
+		summarizeBy: sum
+		sourceColumn: UvalueDoor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column WallArea
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 34eb345c-32b7-4a7e-b057-6955cf01578b
+		sourceLineageTag: WallArea
+		summarizeBy: sum
+		sourceColumn: WallArea
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RoofArea
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 12d27eb5-836e-46e9-af3d-31278a758172
+		sourceLineageTag: RoofArea
+		summarizeBy: sum
+		sourceColumn: RoofArea
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FloorArea
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 90ea059e-6c6b-47f3-8b6f-fe4700faef20
+		sourceLineageTag: FloorArea
+		summarizeBy: sum
+		sourceColumn: FloorArea
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column WindowArea
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 09b02ab6-ec0b-4b2c-a82c-96d6999d5fa4
+		sourceLineageTag: WindowArea
+		summarizeBy: sum
+		sourceColumn: WindowArea
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DoorArea
+		dataType: double
+		sourceProviderType: float
+		lineageTag: cad238bf-6589-4c71-bb44-3b75edcf8ade
+		sourceLineageTag: DoorArea
+		summarizeBy: sum
+		sourceColumn: DoorArea
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NoStoreys
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 89ddf852-32b0-4162-ab91-2aab0252aa61
+		sourceLineageTag: NoStoreys
+		summarizeBy: sum
+		sourceColumn: NoStoreys
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO2Rating
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 7e6eb61e-7623-43db-8fa0-0a000136215a
+		sourceLineageTag: CO2Rating
+		summarizeBy: sum
+		sourceColumn: CO2Rating
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MainSpaceHeatingFuel
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9637c043-fc5c-45cd-9e4c-800d433602a3
+		sourceLineageTag: MainSpaceHeatingFuel
+		summarizeBy: none
+		sourceColumn: MainSpaceHeatingFuel
+
+		annotation SummarizationSetBy = Automatic
+
+	column MainWaterHeatingFuel
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7a43fa9a-e8ac-487b-8930-f0a7969348fe
+		sourceLineageTag: MainWaterHeatingFuel
+		summarizeBy: none
+		sourceColumn: MainWaterHeatingFuel
+
+		annotation SummarizationSetBy = Automatic
+
+	column HSMainSystemEfficiency
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 4c354241-2594-46d0-a77d-a6d950473c49
+		sourceLineageTag: HSMainSystemEfficiency
+		summarizeBy: sum
+		sourceColumn: HSMainSystemEfficiency
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MultiDwellingMPRN
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: cf59e443-eae3-4837-8f91-637d4ff0b392
+		sourceLineageTag: MultiDwellingMPRN
+		summarizeBy: none
+		sourceColumn: MultiDwellingMPRN
+
+		annotation SummarizationSetBy = Automatic
+
+	column TGDLEdition
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 3a3b87f6-2598-40ee-875f-300228683d6f
+		sourceLineageTag: TGDLEdition
+		summarizeBy: sum
+		sourceColumn: TGDLEdition
+
+		annotation SummarizationSetBy = Automatic
+
+	column MPCDERValue
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 1a0fa3d4-f236-422e-81ea-7af2e33d79b3
+		sourceLineageTag: MPCDERValue
+		summarizeBy: sum
+		sourceColumn: MPCDERValue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HSEffAdjFactor
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 7deebb53-4a8d-4607-a4e8-9f01d35d94e7
+		sourceLineageTag: HSEffAdjFactor
+		summarizeBy: sum
+		sourceColumn: HSEffAdjFactor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HSSupplHeatFraction
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 119f4ade-eb10-4013-a9fe-32fbe913bc81
+		sourceLineageTag: HSSupplHeatFraction
+		summarizeBy: sum
+		sourceColumn: HSSupplHeatFraction
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HSSupplSystemEff
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 398de111-60a5-4b79-94a6-ab13389e97dc
+		sourceLineageTag: HSSupplSystemEff
+		summarizeBy: sum
+		sourceColumn: HSSupplSystemEff
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column WHMainSystemEff
+		dataType: double
+		sourceProviderType: float
+		lineageTag: c6cc8be8-4e01-42c7-ba70-e802fdf7cd7e
+		sourceLineageTag: WHMainSystemEff
+		summarizeBy: sum
+		sourceColumn: WHMainSystemEff
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column WHEffAdjFactor
+		dataType: double
+		sourceProviderType: float
+		lineageTag: c59b5b72-0d1b-48c3-9881-677dfaa9dfc7
+		sourceLineageTag: WHEffAdjFactor
+		summarizeBy: sum
+		sourceColumn: WHEffAdjFactor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SupplSHFuel
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 160e87db-c2b8-4e78-80a9-2be782a391af
+		sourceLineageTag: SupplSHFuel
+		summarizeBy: sum
+		sourceColumn: SupplSHFuel
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplWHFuel
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: a7b45310-f8dc-4d8a-a8b1-6b263a772d56
+		sourceLineageTag: SupplWHFuel
+		summarizeBy: sum
+		sourceColumn: SupplWHFuel
+
+		annotation SummarizationSetBy = Automatic
+
+	column SHRenewableResources
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: eb630804-9a26-4e73-a86d-96dc5c305a6a
+		sourceLineageTag: SHRenewableResources
+		summarizeBy: sum
+		sourceColumn: SHRenewableResources
+
+		annotation SummarizationSetBy = Automatic
+
+	column WHRenewableResources
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 3109de72-1dfc-4860-b45c-0d817633c3af
+		sourceLineageTag: WHRenewableResources
+		summarizeBy: sum
+		sourceColumn: WHRenewableResources
+
+		annotation SummarizationSetBy = Automatic
+
+	column NoOfChimneys
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 887ba180-0580-4024-b1d8-25e829f2de54
+		sourceLineageTag: NoOfChimneys
+		summarizeBy: sum
+		sourceColumn: NoOfChimneys
+
+		annotation SummarizationSetBy = Automatic
+
+	column NoOfOpenFlues
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 646fb250-e0e4-4474-9d54-93064ca374cf
+		sourceLineageTag: NoOfOpenFlues
+		summarizeBy: sum
+		sourceColumn: NoOfOpenFlues
+
+		annotation SummarizationSetBy = Automatic
+
+	column NoOfFansAndVents
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 19c3a360-eaad-4983-a96a-9ec50ad86ec1
+		sourceLineageTag: NoOfFansAndVents
+		summarizeBy: sum
+		sourceColumn: NoOfFansAndVents
+
+		annotation SummarizationSetBy = Automatic
+
+	column NoOfFluelessGasFires
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 20980991-5594-4dd7-8277-8f0c1dfcfc3f
+		sourceLineageTag: NoOfFluelessGasFires
+		summarizeBy: sum
+		sourceColumn: NoOfFluelessGasFires
+
+		annotation SummarizationSetBy = Automatic
+
+	column DraftLobby
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f014fe80-819b-4338-bdb5-ea8bf3d62b98
+		sourceLineageTag: DraftLobby
+		summarizeBy: none
+		sourceColumn: DraftLobby
+
+		annotation SummarizationSetBy = Automatic
+
+	column VentilationMethod
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 228cbfe2-fb36-4f11-8370-5bf6f521cc3a
+		sourceLineageTag: VentilationMethod
+		summarizeBy: none
+		sourceColumn: VentilationMethod
+
+		annotation SummarizationSetBy = Automatic
+
+	column FanPowerManuDeclaredValue
+		dataType: double
+		sourceProviderType: float
+		lineageTag: f273b8cb-d7ca-4524-a58c-d19d9ecac9cf
+		sourceLineageTag: FanPowerManuDeclaredValue
+		summarizeBy: sum
+		sourceColumn: FanPowerManuDeclaredValue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HeatExchangerEff
+		dataType: double
+		sourceProviderType: float
+		lineageTag: b9644cd8-3a11-4810-b49c-58b47022b841
+		sourceLineageTag: HeatExchangerEff
+		summarizeBy: sum
+		sourceColumn: HeatExchangerEff
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column StructureType
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b1915e50-1bf2-44b4-99bf-61e8e47c9d0d
+		sourceLineageTag: StructureType
+		summarizeBy: none
+		sourceColumn: StructureType
+
+		annotation SummarizationSetBy = Automatic
+
+	column SuspendedWoodenFloor
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 5ab80795-9d7c-4a61-b2b9-125dbd9e9727
+		sourceLineageTag: SuspendedWoodenFloor
+		summarizeBy: none
+		sourceColumn: SuspendedWoodenFloor
+
+		annotation SummarizationSetBy = Automatic
+
+	column PercentageDraughtStripped
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 8f0a88d9-a306-4437-9bbe-aa7a7298e720
+		sourceLineageTag: PercentageDraughtStripped
+		summarizeBy: sum
+		sourceColumn: PercentageDraughtStripped
+
+		annotation SummarizationSetBy = Automatic
+
+	column NoOfSidesSheltered
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 3b22a7bb-91e9-4cd2-9df9-f9a97d3230fc
+		sourceLineageTag: NoOfSidesSheltered
+		summarizeBy: sum
+		sourceColumn: NoOfSidesSheltered
+
+		annotation SummarizationSetBy = Automatic
+
+	column PermeabilityTest
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 2539f014-5376-46fa-a59c-cf5935602ab3
+		sourceLineageTag: PermeabilityTest
+		summarizeBy: none
+		sourceColumn: PermeabilityTest
+
+		annotation SummarizationSetBy = Automatic
+
+	column PermeabilityTestResult
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 0d87a824-d45f-4584-ac31-d2967b6cc414
+		sourceLineageTag: PermeabilityTestResult
+		summarizeBy: sum
+		sourceColumn: PermeabilityTestResult
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TempAdjustment
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 536d9c45-0f29-4786-a280-e8fce2a728c7
+		sourceLineageTag: TempAdjustment
+		summarizeBy: sum
+		sourceColumn: TempAdjustment
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HeatSystemControlCat
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 1cd06e8e-5837-455d-bdba-4b46e566a0bf
+		sourceLineageTag: HeatSystemControlCat
+		summarizeBy: sum
+		sourceColumn: HeatSystemControlCat
+
+		annotation SummarizationSetBy = Automatic
+
+	column HeatSystemResponseCat
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: dcc045bf-2500-4c1d-aeac-c93cd71e99ae
+		sourceLineageTag: HeatSystemResponseCat
+		summarizeBy: sum
+		sourceColumn: HeatSystemResponseCat
+
+		annotation SummarizationSetBy = Automatic
+
+	column NoCentralHeatingPumps
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 7191dcef-baaa-4016-8211-475e327a3ec4
+		sourceLineageTag: NoCentralHeatingPumps
+		summarizeBy: sum
+		sourceColumn: NoCentralHeatingPumps
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHBoilerThermostatControlled
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1a4176bd-7574-422c-95bd-252594a44c10
+		sourceLineageTag: CHBoilerThermostatControlled
+		summarizeBy: none
+		sourceColumn: CHBoilerThermostatControlled
+
+		annotation SummarizationSetBy = Automatic
+
+	column NoOilBoilerHeatingPumps
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 91d99774-5fc6-4de7-8e5a-b5897d5a4b7b
+		sourceLineageTag: NoOilBoilerHeatingPumps
+		summarizeBy: sum
+		sourceColumn: NoOilBoilerHeatingPumps
+
+		annotation SummarizationSetBy = Automatic
+
+	column OBBoilerThermostatControlled
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 37db1435-2ae3-412b-9d81-00f15faaf932
+		sourceLineageTag: OBBoilerThermostatControlled
+		summarizeBy: none
+		sourceColumn: OBBoilerThermostatControlled
+
+		annotation SummarizationSetBy = Automatic
+
+	column OBPumpInsideDwelling
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 2adec6b9-6381-416e-b146-6e3152f9008c
+		sourceLineageTag: OBPumpInsideDwelling
+		summarizeBy: none
+		sourceColumn: OBPumpInsideDwelling
+
+		annotation SummarizationSetBy = Automatic
+
+	column NoGasBoilerHeatingPumps
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: fdddfba2-9e9b-42ee-9ed6-c7424dcabb5a
+		sourceLineageTag: NoGasBoilerHeatingPumps
+		summarizeBy: sum
+		sourceColumn: NoGasBoilerHeatingPumps
+
+		annotation SummarizationSetBy = Automatic
+
+	column WarmAirHeatingSystem
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: ddf2e02d-3d13-4800-8bed-1bd4a3bcc2ee
+		sourceLineageTag: WarmAirHeatingSystem
+		summarizeBy: none
+		sourceColumn: WarmAirHeatingSystem
+
+		annotation SummarizationSetBy = Automatic
+
+	column UndergroundHeating
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: deee1cb4-f48e-4790-8a74-1a4d81ad34b4
+		sourceLineageTag: UndergroundHeating
+		summarizeBy: none
+		sourceColumn: UndergroundHeating
+
+		annotation SummarizationSetBy = Automatic
+
+	column GroundFloorUValue
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 05c39fb6-061b-4f12-86c9-b0fa6f95c6df
+		sourceLineageTag: GroundFloorUValue
+		summarizeBy: sum
+		sourceColumn: GroundFloorUValue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DistributionLosses
+		dataType: double
+		sourceProviderType: float
+		lineageTag: cf4b7b54-9123-45fb-84f3-f9eb32481c9d
+		sourceLineageTag: DistributionLosses
+		summarizeBy: sum
+		sourceColumn: DistributionLosses
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column StorageLosses
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 5acdf6f6-0fd7-4aee-a1f5-a2ee7eeae227
+		sourceLineageTag: StorageLosses
+		summarizeBy: none
+		sourceColumn: StorageLosses
+
+		annotation SummarizationSetBy = Automatic
+
+	column ManuLossFactorAvail
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 6296c7ad-be64-408a-adaa-1c763ac96be3
+		sourceLineageTag: ManuLossFactorAvail
+		summarizeBy: none
+		sourceColumn: ManuLossFactorAvail
+
+		annotation SummarizationSetBy = Automatic
+
+	column SolarHotWaterHeating
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a2c02fe4-cc06-41e7-b67c-d5e93ad196f6
+		sourceLineageTag: SolarHotWaterHeating
+		summarizeBy: none
+		sourceColumn: SolarHotWaterHeating
+
+		annotation SummarizationSetBy = Automatic
+
+	column ElecImmersionInSummer
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b8299d24-f288-4404-b559-2c46d460890e
+		sourceLineageTag: ElecImmersionInSummer
+		summarizeBy: none
+		sourceColumn: ElecImmersionInSummer
+
+		annotation SummarizationSetBy = Automatic
+
+	column CombiBoiler
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 2ac74c00-3fda-4107-b4fb-884b014f1a26
+		sourceLineageTag: CombiBoiler
+		summarizeBy: none
+		sourceColumn: CombiBoiler
+
+		annotation SummarizationSetBy = Automatic
+
+	column KeepHotFacility
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e1ffd2a1-2aeb-4697-ba7a-43e58970e2ca
+		sourceLineageTag: KeepHotFacility
+		summarizeBy: none
+		sourceColumn: KeepHotFacility
+
+		annotation SummarizationSetBy = Automatic
+
+	column WaterStorageVolume
+		dataType: double
+		sourceProviderType: float
+		lineageTag: bf30bf49-f7a9-4ef3-85be-60fa748b025e
+		sourceLineageTag: WaterStorageVolume
+		summarizeBy: sum
+		sourceColumn: WaterStorageVolume
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DeclaredLossFactor
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 6562a2b4-e047-458f-ae55-5a834ca31d31
+		sourceLineageTag: DeclaredLossFactor
+		summarizeBy: sum
+		sourceColumn: DeclaredLossFactor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TempFactorUnadj
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 66e2de35-cfae-4957-b96f-722f60706a02
+		sourceLineageTag: TempFactorUnadj
+		summarizeBy: sum
+		sourceColumn: TempFactorUnadj
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TempFactorMultiplier
+		dataType: double
+		sourceProviderType: float
+		lineageTag: e1618e0d-3226-47bd-bb98-28d3c9749c29
+		sourceLineageTag: TempFactorMultiplier
+		summarizeBy: sum
+		sourceColumn: TempFactorMultiplier
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column InsulationType
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f78a2ce4-dbad-466c-8a15-efb75ac92a47
+		sourceLineageTag: InsulationType
+		summarizeBy: none
+		sourceColumn: InsulationType
+
+		annotation SummarizationSetBy = Automatic
+
+	column InsulationThickness
+		dataType: double
+		sourceProviderType: float
+		lineageTag: db44e79f-3ea7-4810-8ad9-b1179cd8b798
+		sourceLineageTag: InsulationThickness
+		summarizeBy: sum
+		sourceColumn: InsulationThickness
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PrimaryCircuitLoss
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 4dc6c178-a5fb-4846-9749-d20bc293c598
+		sourceLineageTag: PrimaryCircuitLoss
+		summarizeBy: none
+		sourceColumn: PrimaryCircuitLoss
+
+		annotation SummarizationSetBy = Automatic
+
+	column CombiBoilerAddLoss
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 7ac672d4-3e04-4443-94d2-f833f6483fb0
+		sourceLineageTag: CombiBoilerAddLoss
+		summarizeBy: sum
+		sourceColumn: CombiBoilerAddLoss
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ElecConsumpKeepHot
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 2bcad2e6-3e20-4096-95bd-918eaf2db1a6
+		sourceLineageTag: ElecConsumpKeepHot
+		summarizeBy: sum
+		sourceColumn: ElecConsumpKeepHot
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ApertureArea
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 4936fe3d-ccae-4376-b90d-5d0b57263d50
+		sourceLineageTag: ApertureArea
+		summarizeBy: sum
+		sourceColumn: ApertureArea
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ZeroLossCollectorEff
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 12d0d7c7-60b2-42af-8895-6f74b944f0dd
+		sourceLineageTag: ZeroLossCollectorEff
+		summarizeBy: sum
+		sourceColumn: ZeroLossCollectorEff
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CollectorHeatLossCoEff
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 194d26fc-16bd-4d2d-b60d-4a7854a5441c
+		sourceLineageTag: CollectorHeatLossCoEff
+		summarizeBy: sum
+		sourceColumn: CollectorHeatLossCoEff
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AnnualSolarRadiation
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 80dd38e8-a8ab-405f-87b5-bf23d4324430
+		sourceLineageTag: AnnualSolarRadiation
+		summarizeBy: sum
+		sourceColumn: AnnualSolarRadiation
+
+		annotation SummarizationSetBy = Automatic
+
+	column OvershadingFactor
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 02befdd8-aab3-420e-8d47-2eebc5415887
+		sourceLineageTag: OvershadingFactor
+		summarizeBy: sum
+		sourceColumn: OvershadingFactor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CylinderStat
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a50df937-9e03-4b11-9398-ade6222f9c98
+		sourceLineageTag: CylinderStat
+		summarizeBy: none
+		sourceColumn: CylinderStat
+
+		annotation SummarizationSetBy = Automatic
+
+	column SolarStorageVolume
+		dataType: double
+		sourceProviderType: float
+		lineageTag: cb653b3f-87e3-474c-ba1e-8c5b83e03519
+		sourceLineageTag: SolarStorageVolume
+		summarizeBy: sum
+		sourceColumn: SolarStorageVolume
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VolumeOfPreHeatStore
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 77935f66-2e10-4a80-a63b-8d763021b644
+		sourceLineageTag: VolumeOfPreHeatStore
+		summarizeBy: sum
+		sourceColumn: VolumeOfPreHeatStore
+
+		annotation SummarizationSetBy = Automatic
+
+	column CombinedCylinder
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 95713605-479e-47f9-918f-022f9461b8b5
+		sourceLineageTag: CombinedCylinder
+		summarizeBy: none
+		sourceColumn: CombinedCylinder
+
+		annotation SummarizationSetBy = Automatic
+
+	column ElectricityConsumption
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 449c2371-1415-46a0-87cc-0ce6b43842e2
+		sourceLineageTag: ElectricityConsumption
+		summarizeBy: sum
+		sourceColumn: ElectricityConsumption
+
+		annotation SummarizationSetBy = Automatic
+
+	column SWHPumpSolarPowered
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 14cc5c94-a80e-47f2-a8df-ca71ba8236d0
+		sourceLineageTag: SWHPumpSolarPowered
+		summarizeBy: none
+		sourceColumn: SWHPumpSolarPowered
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChargingBasisHeatConsumed
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: be627a2e-5059-472c-b891-ea00fdb0f4c9
+		sourceLineageTag: ChargingBasisHeatConsumed
+		summarizeBy: none
+		sourceColumn: ChargingBasisHeatConsumed
+
+		annotation SummarizationSetBy = Automatic
+
+	column gsdHSSupplHeatFraction
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 47830b04-42f2-4ceb-88ce-f4208fa4fcfd
+		sourceLineageTag: gsdHSSupplHeatFraction
+		summarizeBy: sum
+		sourceColumn: gsdHSSupplHeatFraction
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column gsdHSSupplSystemEff
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 5058c416-4f01-4353-bad0-a8dc00079eae
+		sourceLineageTag: gsdHSSupplSystemEff
+		summarizeBy: sum
+		sourceColumn: gsdHSSupplSystemEff
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DistLossFactor
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 72fda4f8-11f8-44de-a173-f98b5de222f6
+		sourceLineageTag: DistLossFactor
+		summarizeBy: sum
+		sourceColumn: DistLossFactor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CHPUnitHeatFraction
+		dataType: double
+		sourceProviderType: float
+		lineageTag: eae7389f-393e-4e82-a671-565287a4afcf
+		sourceLineageTag: CHPUnitHeatFraction
+		summarizeBy: sum
+		sourceColumn: CHPUnitHeatFraction
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CHPSystemType
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: e75ded05-4bfa-4fde-aaae-edc77cca79c1
+		sourceLineageTag: CHPSystemType
+		summarizeBy: sum
+		sourceColumn: CHPSystemType
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHPElecEff
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 7f16830b-dae5-4921-a035-4e0e5b30128d
+		sourceLineageTag: CHPElecEff
+		summarizeBy: sum
+		sourceColumn: CHPElecEff
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CHPHeatEff
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 27d44208-4c2d-4daa-b60a-3e972279492f
+		sourceLineageTag: CHPHeatEff
+		summarizeBy: sum
+		sourceColumn: CHPHeatEff
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CHPFuelType
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: c04542f3-c434-4f0d-9d9f-707521baa1a1
+		sourceLineageTag: CHPFuelType
+		summarizeBy: sum
+		sourceColumn: CHPFuelType
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplHSFuelTypeID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 6f58bf6e-c05e-46a6-bf1f-171a52162a03
+		sourceLineageTag: SupplHSFuelTypeID
+		summarizeBy: count
+		sourceColumn: SupplHSFuelTypeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column gsdSHRenewableResources
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 184d0eb9-6736-48b5-b538-e477bb1dd1f5
+		sourceLineageTag: gsdSHRenewableResources
+		summarizeBy: none
+		sourceColumn: gsdSHRenewableResources
+
+		annotation SummarizationSetBy = Automatic
+
+	column gsdWHRenewableResources
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9d888f32-8819-447f-9393-b60d4ddea72b
+		sourceLineageTag: gsdWHRenewableResources
+		summarizeBy: none
+		sourceColumn: gsdWHRenewableResources
+
+		annotation SummarizationSetBy = Automatic
+
+	column SolarHeatFraction
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: a0c3825e-6bf2-4fce-82bb-1508e2d837bd
+		sourceLineageTag: SolarHeatFraction
+		summarizeBy: sum
+		sourceColumn: SolarHeatFraction
+
+		annotation SummarizationSetBy = Automatic
+
+	column DeliveredLightingEnergy
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 0a61b265-aadc-48de-ada1-75b46d7fea72
+		sourceLineageTag: DeliveredLightingEnergy
+		summarizeBy: sum
+		sourceColumn: DeliveredLightingEnergy
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DeliveredEnergyPumpsFans
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 50b19b99-3073-47b1-b852-2b4cfc26783d
+		sourceLineageTag: DeliveredEnergyPumpsFans
+		summarizeBy: sum
+		sourceColumn: DeliveredEnergyPumpsFans
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DeliveredEnergyMainWater
+		dataType: double
+		sourceProviderType: float
+		lineageTag: e4f4e448-532c-4879-8d23-6e5b6a2e6fb3
+		sourceLineageTag: DeliveredEnergyMainWater
+		summarizeBy: sum
+		sourceColumn: DeliveredEnergyMainWater
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DeliveredEnergyMainSpace
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 86d5d893-29bb-4f8b-bf82-51f67a4ded63
+		sourceLineageTag: DeliveredEnergyMainSpace
+		summarizeBy: sum
+		sourceColumn: DeliveredEnergyMainSpace
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PrimaryEnergyLighting
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 1af197cb-1c2f-4843-9476-40c2f2662194
+		sourceLineageTag: PrimaryEnergyLighting
+		summarizeBy: sum
+		sourceColumn: PrimaryEnergyLighting
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PrimaryEnergyPumpsFans
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 447b9d70-a6c4-4153-8381-da5a7039a4a5
+		sourceLineageTag: PrimaryEnergyPumpsFans
+		summarizeBy: sum
+		sourceColumn: PrimaryEnergyPumpsFans
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PrimaryEnergyMainWater
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 01d3f0e7-cc29-4c57-945f-eb5b65e5f1fe
+		sourceLineageTag: PrimaryEnergyMainWater
+		summarizeBy: sum
+		sourceColumn: PrimaryEnergyMainWater
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PrimaryEnergyMainSpace
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 96202338-edd9-4027-af8f-c757e3f5e5f7
+		sourceLineageTag: PrimaryEnergyMainSpace
+		summarizeBy: sum
+		sourceColumn: PrimaryEnergyMainSpace
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CO2Lighting
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 1fe43361-cd2f-41e6-a060-1c54a14588cd
+		sourceLineageTag: CO2Lighting
+		summarizeBy: sum
+		sourceColumn: CO2Lighting
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CO2PumpsFans
+		dataType: double
+		sourceProviderType: float
+		lineageTag: a94562fb-e535-4f7b-ba83-f736bcdd5cc1
+		sourceLineageTag: CO2PumpsFans
+		summarizeBy: sum
+		sourceColumn: CO2PumpsFans
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CO2MainWater
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 8fed2de9-baa1-416d-b59a-04b3218acab5
+		sourceLineageTag: CO2MainWater
+		summarizeBy: sum
+		sourceColumn: CO2MainWater
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CO2MainSpace
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 36bb1d25-4d86-4613-a492-5072f2039538
+		sourceLineageTag: CO2MainSpace
+		summarizeBy: sum
+		sourceColumn: CO2MainSpace
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GroundFloorArea
+		dataType: double
+		sourceProviderType: float
+		lineageTag: a13e55de-9ba0-4cae-9dca-9bee39ee1fd0
+		sourceLineageTag: GroundFloorArea
+		summarizeBy: sum
+		sourceColumn: GroundFloorArea
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GroundFloorHeight
+		dataType: double
+		sourceProviderType: float
+		lineageTag: de069b49-bc1d-4e1e-8151-fc6e1cf8bf93
+		sourceLineageTag: GroundFloorHeight
+		summarizeBy: sum
+		sourceColumn: GroundFloorHeight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FirstFloorArea
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 291d6e04-45fd-41cb-82d3-73d43a78803c
+		sourceLineageTag: FirstFloorArea
+		summarizeBy: sum
+		sourceColumn: FirstFloorArea
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FirstFloorHeight
+		dataType: double
+		sourceProviderType: float
+		lineageTag: aada1c01-13b1-45f5-a258-bab63a46ece0
+		sourceLineageTag: FirstFloorHeight
+		summarizeBy: sum
+		sourceColumn: FirstFloorHeight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SecondFloorArea
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 38aa39cc-1fe5-4f17-b2d8-09cd23bbc1b8
+		sourceLineageTag: SecondFloorArea
+		summarizeBy: sum
+		sourceColumn: SecondFloorArea
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SecondFloorHeight
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 6eca5809-ec87-45f4-b21d-e242fab3d2be
+		sourceLineageTag: SecondFloorHeight
+		summarizeBy: sum
+		sourceColumn: SecondFloorHeight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ThirdFloorArea
+		dataType: double
+		sourceProviderType: float
+		lineageTag: c89c5276-851b-46c4-beb5-d0c9fb0164c4
+		sourceLineageTag: ThirdFloorArea
+		summarizeBy: sum
+		sourceColumn: ThirdFloorArea
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ThirdFloorHeight
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 6a3f55e8-ab90-4835-9aab-d15f47fa70e0
+		sourceLineageTag: ThirdFloorHeight
+		summarizeBy: sum
+		sourceColumn: ThirdFloorHeight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ThermalBridgingFactor
+		dataType: double
+		sourceProviderType: float
+		lineageTag: e0144330-6911-476a-9626-77fcde1730f3
+		sourceLineageTag: ThermalBridgingFactor
+		summarizeBy: sum
+		sourceColumn: ThermalBridgingFactor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ThermalMassCategory
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 5e198003-7d1a-42a7-b43a-a4f3d1dac6c2
+		sourceLineageTag: ThermalMassCategory
+		summarizeBy: none
+		sourceColumn: ThermalMassCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column PredominantRoofTypeArea
+		dataType: double
+		sourceProviderType: float
+		lineageTag: ff837bca-02ba-4f31-bed3-b95aa5f6d14a
+		sourceLineageTag: PredominantRoofTypeArea
+		summarizeBy: sum
+		sourceColumn: PredominantRoofTypeArea
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PredominantRoofType
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 5f3dada1-f8fa-4fe4-874d-07333a88b44f
+		sourceLineageTag: PredominantRoofType
+		summarizeBy: none
+		sourceColumn: PredominantRoofType
+
+		annotation SummarizationSetBy = Automatic
+
+	column LowEnergyLightingPercent
+		dataType: double
+		sourceProviderType: float
+		lineageTag: a2f5d208-1be4-4ec5-9b1c-84f46d638cc4
+		sourceLineageTag: LowEnergyLightingPercent
+		summarizeBy: sum
+		sourceColumn: LowEnergyLightingPercent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TotalDeliveredEnergy
+		dataType: double
+		sourceProviderType: float
+		lineageTag: b54d20bf-af02-495d-a021-7f6ea4638dd1
+		sourceLineageTag: TotalDeliveredEnergy
+		summarizeBy: sum
+		sourceColumn: TotalDeliveredEnergy
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DeliveredEnergySecondarySpace
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 84833e56-e75e-4d6f-affb-c6ac17870191
+		sourceLineageTag: DeliveredEnergySecondarySpace
+		summarizeBy: sum
+		sourceColumn: DeliveredEnergySecondarySpace
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DeliveredEnergySupplementaryWater
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 90eac417-4da5-48b2-95bd-437ce30d0e9b
+		sourceLineageTag: DeliveredEnergySupplementaryWater
+		summarizeBy: sum
+		sourceColumn: DeliveredEnergySupplementaryWater
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LivingAreaPercent
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 068e9764-562c-4642-996a-1a4e56ddfc78
+		sourceLineageTag: LivingAreaPercent
+		summarizeBy: sum
+		sourceColumn: LivingAreaPercent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CO2SecondarySpace
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 9a27c638-de3d-4c83-9f6e-1d2782825bcd
+		sourceLineageTag: CO2SecondarySpace
+		summarizeBy: sum
+		sourceColumn: CO2SecondarySpace
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CO2SupplementaryWater
+		dataType: double
+		sourceProviderType: float
+		lineageTag: d7dc003d-18c1-4411-87f2-bc05b841c6f1
+		sourceLineageTag: CO2SupplementaryWater
+		summarizeBy: sum
+		sourceColumn: CO2SupplementaryWater
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PrimaryEnergySecondarySpace
+		dataType: double
+		sourceProviderType: float
+		lineageTag: d1ed8f57-49a1-47a0-961b-b32ac5dc2a40
+		sourceLineageTag: PrimaryEnergySecondarySpace
+		summarizeBy: sum
+		sourceColumn: PrimaryEnergySecondarySpace
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PrimaryEnergySupplementaryWater
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 94bf0eb3-20aa-4f73-8749-66aa1132fef1
+		sourceLineageTag: PrimaryEnergySupplementaryWater
+		summarizeBy: sum
+		sourceColumn: PrimaryEnergySupplementaryWater
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HESSchemeUpgrade
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 66aa2f1f-bfac-4524-a028-ada211c00f9e
+		sourceLineageTag: HESSchemeUpgrade
+		summarizeBy: sum
+		sourceColumn: HESSchemeUpgrade
+
+		annotation SummarizationSetBy = Automatic
+
+	column RoomInRoofArea
+		dataType: double
+		sourceProviderType: float
+		lineageTag: aedd1b95-a329-4025-90be-f23928944247
+		sourceLineageTag: RoomInRoofArea
+		summarizeBy: sum
+		sourceColumn: RoomInRoofArea
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PurposeOfRating
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f2b9d01e-8fa8-4b10-a1ac-5fd2bfa4b273
+		sourceLineageTag: PurposeOfRating
+		summarizeBy: none
+		sourceColumn: PurposeOfRating
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateOfAssessment
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 536458f2-efea-4e7c-9740-1b7ea2b0301b
+		sourceLineageTag: DateOfAssessment
+		summarizeBy: none
+		sourceColumn: DateOfAssessment
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstEnergyTypeId
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 73670fae-cb4b-4abd-90fb-b1afbbca2776
+		sourceLineageTag: FirstEnergyTypeId
+		summarizeBy: count
+		sourceColumn: FirstEnergyTypeId
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstEnergyType_Description
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 59644f1a-d061-4ff1-b0f6-43f515f9de70
+		sourceLineageTag: FirstEnergyType_Description
+		summarizeBy: none
+		sourceColumn: FirstEnergyType_Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstEnerProdComment
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 279c42c7-065a-417a-ab5c-39441f0bde9e
+		sourceLineageTag: FirstEnerProdComment
+		summarizeBy: none
+		sourceColumn: FirstEnerProdComment
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstEnerProdDelivered
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 32f4ecac-9de3-4335-94dc-cdd787445281
+		sourceLineageTag: FirstEnerProdDelivered
+		summarizeBy: sum
+		sourceColumn: FirstEnerProdDelivered
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FirstPartLTotalContribution
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 12526a36-95df-4f91-8cf0-ebd52396d642
+		sourceLineageTag: FirstPartLTotalContribution
+		summarizeBy: sum
+		sourceColumn: FirstPartLTotalContribution
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FirstEnerProdConvFactor
+		dataType: double
+		sourceProviderType: float
+		lineageTag: db3e008f-9cb2-474c-982e-d777ce53ee0b
+		sourceLineageTag: FirstEnerProdConvFactor
+		summarizeBy: sum
+		sourceColumn: FirstEnerProdConvFactor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FirstEnerProdCO2EmissionFactor
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 24d1e043-8a0a-4a34-b11c-6b90a97a7b82
+		sourceLineageTag: FirstEnerProdCO2EmissionFactor
+		summarizeBy: sum
+		sourceColumn: FirstEnerProdCO2EmissionFactor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FirstEnerConsumedComment
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 5bb158dd-f9f9-4ec8-b6ce-2c34ff352d30
+		sourceLineageTag: FirstEnerConsumedComment
+		summarizeBy: none
+		sourceColumn: FirstEnerConsumedComment
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstEnerConsumedDelivered
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 280be0ad-dc65-4d15-872f-5584448ab5e5
+		sourceLineageTag: FirstEnerConsumedDelivered
+		summarizeBy: sum
+		sourceColumn: FirstEnerConsumedDelivered
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FirstEnerConsumedConvFactor
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 8ff7e3d2-d01e-4aad-a078-fb54f491730a
+		sourceLineageTag: FirstEnerConsumedConvFactor
+		summarizeBy: sum
+		sourceColumn: FirstEnerConsumedConvFactor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FirstEnerConsumedCO2EmissionFactor
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 7e0e4779-6e46-4050-93bb-7ada23b4bec8
+		sourceLineageTag: FirstEnerConsumedCO2EmissionFactor
+		summarizeBy: sum
+		sourceColumn: FirstEnerConsumedCO2EmissionFactor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SecondEnergyTypeId
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 8499cb22-f42c-4288-b20e-bc19571e8c73
+		sourceLineageTag: SecondEnergyTypeId
+		summarizeBy: count
+		sourceColumn: SecondEnergyTypeId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SecondEnergyType_Description
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b564bde7-b12a-4f2b-ab21-8d553d95e8cc
+		sourceLineageTag: SecondEnergyType_Description
+		summarizeBy: none
+		sourceColumn: SecondEnergyType_Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column SecondEnerProdComment
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 280f4fb7-0b87-4637-bf60-085b9bf9d5a8
+		sourceLineageTag: SecondEnerProdComment
+		summarizeBy: none
+		sourceColumn: SecondEnerProdComment
+
+		annotation SummarizationSetBy = Automatic
+
+	column SecondEnerProdDelivered
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 1c7cfff0-1e34-43aa-af00-5dcc300c4547
+		sourceLineageTag: SecondEnerProdDelivered
+		summarizeBy: sum
+		sourceColumn: SecondEnerProdDelivered
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SecondPartLTotalContribution
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 75ccd58a-e81b-4234-850d-084a132a43fc
+		sourceLineageTag: SecondPartLTotalContribution
+		summarizeBy: sum
+		sourceColumn: SecondPartLTotalContribution
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SecondEnerProdConvFactor
+		dataType: double
+		sourceProviderType: float
+		lineageTag: f1219e2b-9615-4224-86d5-e017945cf2d6
+		sourceLineageTag: SecondEnerProdConvFactor
+		summarizeBy: sum
+		sourceColumn: SecondEnerProdConvFactor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SecondEnerProdCO2EmissionFactor
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 010460a0-6f46-467e-85b3-e451d1a9f01f
+		sourceLineageTag: SecondEnerProdCO2EmissionFactor
+		summarizeBy: sum
+		sourceColumn: SecondEnerProdCO2EmissionFactor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SecondEnerConsumedComment
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 77d277be-86c5-49c7-845c-a95ef6a889b3
+		sourceLineageTag: SecondEnerConsumedComment
+		summarizeBy: none
+		sourceColumn: SecondEnerConsumedComment
+
+		annotation SummarizationSetBy = Automatic
+
+	column SecondEnerConsumedDelivered
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 77f270fa-e36c-4705-bcf7-302b228124b2
+		sourceLineageTag: SecondEnerConsumedDelivered
+		summarizeBy: sum
+		sourceColumn: SecondEnerConsumedDelivered
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SecondEnerConsumedConvFactor
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 6da5cf63-ad59-4d16-a03a-c26f15c4a21b
+		sourceLineageTag: SecondEnerConsumedConvFactor
+		summarizeBy: sum
+		sourceColumn: SecondEnerConsumedConvFactor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SecondEnerConsumedCO2EmissionFactor
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 49cb665a-45c3-4746-8266-1e982bf804b3
+		sourceLineageTag: SecondEnerConsumedCO2EmissionFactor
+		summarizeBy: sum
+		sourceColumn: SecondEnerConsumedCO2EmissionFactor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ThirdEnergyTypeId
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 699ba3a5-baf0-4787-8a57-efb95fcff098
+		sourceLineageTag: ThirdEnergyTypeId
+		summarizeBy: count
+		sourceColumn: ThirdEnergyTypeId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ThirdEnergyType_Description
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 62f80d6d-6ebb-41b2-b532-890053654200
+		sourceLineageTag: ThirdEnergyType_Description
+		summarizeBy: none
+		sourceColumn: ThirdEnergyType_Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column ThirdEnerProdComment
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 0f85107b-89cb-490b-86ff-1a0ee9e1fb66
+		sourceLineageTag: ThirdEnerProdComment
+		summarizeBy: none
+		sourceColumn: ThirdEnerProdComment
+
+		annotation SummarizationSetBy = Automatic
+
+	column ThirdEnerProdDelivered
+		dataType: double
+		sourceProviderType: float
+		lineageTag: bdd59942-da6e-4ccf-8cad-56cfd7214059
+		sourceLineageTag: ThirdEnerProdDelivered
+		summarizeBy: sum
+		sourceColumn: ThirdEnerProdDelivered
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ThirdPartLTotalContribution
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 3388db4b-3836-4461-a4f1-8562c594b3b9
+		sourceLineageTag: ThirdPartLTotalContribution
+		summarizeBy: sum
+		sourceColumn: ThirdPartLTotalContribution
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ThirdEnerProdConvFactor
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 26c08081-9274-436b-a23f-418a3932219c
+		sourceLineageTag: ThirdEnerProdConvFactor
+		summarizeBy: sum
+		sourceColumn: ThirdEnerProdConvFactor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ThirdEnerProdCO2EmissionFactor
+		dataType: double
+		sourceProviderType: float
+		lineageTag: dfd35298-1a93-4951-af50-dc76714052f5
+		sourceLineageTag: ThirdEnerProdCO2EmissionFactor
+		summarizeBy: sum
+		sourceColumn: ThirdEnerProdCO2EmissionFactor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ThirdEnerConsumedComment
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 10210cad-94ca-4913-9ca0-2ba01512c3f1
+		sourceLineageTag: ThirdEnerConsumedComment
+		summarizeBy: none
+		sourceColumn: ThirdEnerConsumedComment
+
+		annotation SummarizationSetBy = Automatic
+
+	column ThirdEnerConsumedDelivered
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 80eed6dc-f500-497e-bddb-2b28498338c1
+		sourceLineageTag: ThirdEnerConsumedDelivered
+		summarizeBy: sum
+		sourceColumn: ThirdEnerConsumedDelivered
+
+		annotation SummarizationSetBy = Automatic
+
+	column ThirdEnerConsumedConvFactor
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 8a4805a5-f366-447f-b169-f5c20ef6a55e
+		sourceLineageTag: ThirdEnerConsumedConvFactor
+		summarizeBy: sum
+		sourceColumn: ThirdEnerConsumedConvFactor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ThirdEnerConsumedCO2EmissionFactor
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 247656cc-0057-4c65-86ed-72b4ac711b55
+		sourceLineageTag: ThirdEnerConsumedCO2EmissionFactor
+		summarizeBy: sum
+		sourceColumn: ThirdEnerConsumedCO2EmissionFactor
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstBoilerFuelType
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 7e2f3786-2264-4fb5-aedc-5d81127a9f2d
+		sourceLineageTag: FirstBoilerFuelType
+		summarizeBy: sum
+		sourceColumn: FirstBoilerFuelType
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstHeatGenPlantEff
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 97c7eb4f-72b0-47dd-afc3-8207b03b09a4
+		sourceLineageTag: FirstHeatGenPlantEff
+		summarizeBy: sum
+		sourceColumn: FirstHeatGenPlantEff
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FirstPercentageHeat
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 5bcd3967-a8e5-4c6f-981a-7717795b2c9b
+		sourceLineageTag: FirstPercentageHeat
+		summarizeBy: sum
+		sourceColumn: FirstPercentageHeat
+
+		annotation SummarizationSetBy = Automatic
+
+	column SecondBoilerFuelType
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 398f5482-c28f-4d41-9609-af2218a3e71d
+		sourceLineageTag: SecondBoilerFuelType
+		summarizeBy: sum
+		sourceColumn: SecondBoilerFuelType
+
+		annotation SummarizationSetBy = Automatic
+
+	column SecondHeatGenPlantEff
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 3ea8399e-8afa-40df-9a5d-a4704e811ff3
+		sourceLineageTag: SecondHeatGenPlantEff
+		summarizeBy: sum
+		sourceColumn: SecondHeatGenPlantEff
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SecondPercentageHeat
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 39bb91b2-e12e-46d8-a5d4-33fb2e997e76
+		sourceLineageTag: SecondPercentageHeat
+		summarizeBy: sum
+		sourceColumn: SecondPercentageHeat
+
+		annotation SummarizationSetBy = Automatic
+
+	column ThirdBoilerFuelType
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 969b7dd9-61cb-47bb-b508-502ae78e1428
+		sourceLineageTag: ThirdBoilerFuelType
+		summarizeBy: sum
+		sourceColumn: ThirdBoilerFuelType
+
+		annotation SummarizationSetBy = Automatic
+
+	column ThirdHeatGenPlantEff
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: f598d343-e889-49f6-be92-fd48207b1633
+		sourceLineageTag: ThirdHeatGenPlantEff
+		summarizeBy: sum
+		sourceColumn: ThirdHeatGenPlantEff
+
+		annotation SummarizationSetBy = Automatic
+
+	column ThirdPercentageHeat
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 6c9dfa3d-22f7-449f-b043-11466b936404
+		sourceLineageTag: ThirdPercentageHeat
+		summarizeBy: sum
+		sourceColumn: ThirdPercentageHeat
+
+		annotation SummarizationSetBy = Automatic
+
+	column SolarSpaceHeatingSystem
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: f81ae549-4d72-4048-9dcf-e44fcb6f36d6
+		sourceLineageTag: SolarSpaceHeatingSystem
+		summarizeBy: sum
+		sourceColumn: SolarSpaceHeatingSystem
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalPrimaryEnergyFact
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 130fb78c-8dc7-4545-b8b9-5c55fd53fc7a
+		sourceLineageTag: TotalPrimaryEnergyFact
+		summarizeBy: sum
+		sourceColumn: TotalPrimaryEnergyFact
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TotalCO2Emissions
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 3f329761-5df1-4f14-9ed3-8fc465407586
+		sourceLineageTag: TotalCO2Emissions
+		summarizeBy: sum
+		sourceColumn: TotalCO2Emissions
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FirstWallType_Description
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 0ab8fe7c-cd82-45f8-bed6-25e47c79ecf7
+		sourceLineageTag: FirstWallType_Description
+		summarizeBy: none
+		sourceColumn: FirstWallType_Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstWallDescription
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 2542fd20-e315-42a6-a68d-9320b8a54b36
+		sourceLineageTag: FirstWallDescription
+		summarizeBy: none
+		sourceColumn: FirstWallDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstWallArea
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 23d0eb5c-0d93-4fb6-858d-41382e4b06d9
+		sourceLineageTag: FirstWallArea
+		summarizeBy: sum
+		sourceColumn: FirstWallArea
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FirstWallUValue
+		dataType: double
+		sourceProviderType: float
+		lineageTag: b88144ac-bef7-40aa-acfd-24c48bb59427
+		sourceLineageTag: FirstWallUValue
+		summarizeBy: sum
+		sourceColumn: FirstWallUValue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FirstWallIsSemiExposed
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 0c2a44d7-d070-45a4-bcc9-50fa984951eb
+		sourceLineageTag: FirstWallIsSemiExposed
+		summarizeBy: none
+		sourceColumn: FirstWallIsSemiExposed
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstWallAgeBandId
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: b497a1c1-329d-4640-b691-4e6c58a88dfd
+		sourceLineageTag: FirstWallAgeBandId
+		summarizeBy: count
+		sourceColumn: FirstWallAgeBandId
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstWallTypeId
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 70a132ca-3fb0-4a37-b360-2325295f0235
+		sourceLineageTag: FirstWallTypeId
+		summarizeBy: count
+		sourceColumn: FirstWallTypeId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SecondWallType_Description
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 56598734-c09e-4301-803a-afb77449016a
+		sourceLineageTag: SecondWallType_Description
+		summarizeBy: none
+		sourceColumn: SecondWallType_Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column SecondWallDescription
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 59f413a8-ebb4-4a2c-b501-afa4b7b23850
+		sourceLineageTag: SecondWallDescription
+		summarizeBy: none
+		sourceColumn: SecondWallDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column SecondWallArea
+		dataType: double
+		sourceProviderType: float
+		lineageTag: a207c603-7720-4a26-8007-b0ba3435af71
+		sourceLineageTag: SecondWallArea
+		summarizeBy: sum
+		sourceColumn: SecondWallArea
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SecondWallUValue
+		dataType: double
+		sourceProviderType: float
+		lineageTag: f4c061dc-23c1-4713-b55d-a65ee60bd91b
+		sourceLineageTag: SecondWallUValue
+		summarizeBy: sum
+		sourceColumn: SecondWallUValue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SecondWallIsSemiExposed
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 84a2913f-4fa7-463d-ace7-9df15273eb68
+		sourceLineageTag: SecondWallIsSemiExposed
+		summarizeBy: none
+		sourceColumn: SecondWallIsSemiExposed
+
+		annotation SummarizationSetBy = Automatic
+
+	column SecondWallAgeBandId
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: f1f17025-a603-481a-8916-1adcad181826
+		sourceLineageTag: SecondWallAgeBandId
+		summarizeBy: count
+		sourceColumn: SecondWallAgeBandId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SecondWallTypeId
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 075b5023-27b0-43af-92ee-3d61f1ed7a66
+		sourceLineageTag: SecondWallTypeId
+		summarizeBy: count
+		sourceColumn: SecondWallTypeId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ThirdWallType_Description
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: bf3d9e38-62f6-450f-b8ff-7b805b773e61
+		sourceLineageTag: ThirdWallType_Description
+		summarizeBy: none
+		sourceColumn: ThirdWallType_Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column ThirdWallDescription
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 3b81ca22-3c16-474e-9c4b-ef141b99cbab
+		sourceLineageTag: ThirdWallDescription
+		summarizeBy: none
+		sourceColumn: ThirdWallDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column ThirdWallArea
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 83f76066-5140-4db3-bd93-06d31e679d04
+		sourceLineageTag: ThirdWallArea
+		summarizeBy: sum
+		sourceColumn: ThirdWallArea
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ThirdWallUValue
+		dataType: double
+		sourceProviderType: float
+		lineageTag: d80a6ca2-3a03-4eb9-910a-ab47050bd2f8
+		sourceLineageTag: ThirdWallUValue
+		summarizeBy: sum
+		sourceColumn: ThirdWallUValue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ThirdWallIsSemiExposed
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 3818708e-cda7-4c4d-a68a-d3ccb4b7dee1
+		sourceLineageTag: ThirdWallIsSemiExposed
+		summarizeBy: none
+		sourceColumn: ThirdWallIsSemiExposed
+
+		annotation SummarizationSetBy = Automatic
+
+	column ThirdWallAgeBandId
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 591813c2-16dc-4bfc-9cb2-e0fecdfbd491
+		sourceLineageTag: ThirdWallAgeBandId
+		summarizeBy: count
+		sourceColumn: ThirdWallAgeBandId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ThirdWallTypeId
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: e072144a-9c46-4530-90ea-d6462f52971c
+		sourceLineageTag: ThirdWallTypeId
+		summarizeBy: count
+		sourceColumn: ThirdWallTypeId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SA_Code
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 16b731f0-0576-4ba0-870a-b31b9fbdd239
+		sourceLineageTag: SA_Code
+		summarizeBy: none
+		sourceColumn: SA_Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column prob_smarea_error_0corr
+		dataType: double
+		sourceProviderType: float
+		lineageTag: f6d14c2b-4e7b-4119-b547-8f8f0e341d05
+		sourceLineageTag: prob_smarea_error_0corr
+		summarizeBy: sum
+		sourceColumn: prob_smarea_error_0corr
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column prob_smarea_error_100corr
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 83cedac1-11cb-4d83-ba50-aa71ea309bf0
+		sourceLineageTag: prob_smarea_error_100corr
+		summarizeBy: sum
+		sourceColumn: prob_smarea_error_100corr
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RER
+		dataType: double
+		sourceProviderType: float
+		lineageTag: ac563866-5515-4b7e-a0bc-f68bfe3f018e
+		sourceLineageTag: RER
+		summarizeBy: sum
+		sourceColumn: RER
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RenewEPnren
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 3ac5d054-ebfe-4f98-992f-14c5cccd26f2
+		sourceLineageTag: RenewEPnren
+		summarizeBy: sum
+		sourceColumn: RenewEPnren
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RenewEPren
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 02619fbd-c565-4053-afec-8f4fa4bec8e5
+		sourceLineageTag: RenewEPren
+		summarizeBy: sum
+		sourceColumn: RenewEPren
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CPC
+		dataType: double
+		sourceProviderType: float
+		lineageTag: ddc35ecf-2cde-4e5b-8a5a-4381eaced3c5
+		sourceLineageTag: CPC
+		summarizeBy: sum
+		sourceColumn: CPC
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EPC
+		dataType: double
+		sourceProviderType: float
+		lineageTag: d801abc9-fc2f-4c45-9ba9-5ec4434c30ad
+		sourceLineageTag: EPC
+		summarizeBy: sum
+		sourceColumn: EPC
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ingestion_timestamp
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: cecb4080-577f-43c7-a72f-bf250c0a372b
+		sourceLineageTag: ingestion_timestamp
+		summarizeBy: none
+		sourceColumn: ingestion_timestamp
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_lineage_file
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: aae79b49-a502-4c1d-9dfe-be184fa46310
+		sourceLineageTag: source_lineage_file
+		summarizeBy: none
+		sourceColumn: source_lineage_file
+
+		annotation SummarizationSetBy = Automatic
+
+	column pipeline_execution_layer
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a5cd9d74-586d-4fcc-a8bc-62dfd372ecfe
+		sourceLineageTag: pipeline_execution_layer
+		summarizeBy: none
+		sourceColumn: pipeline_execution_layer
+
+		annotation SummarizationSetBy = Automatic
+
+	column GeographyKey
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 4ca9c18b-fe99-47cf-8347-c51ad22bd293
+		sourceLineageTag: GeographyKey
+		summarizeBy: none
+		sourceColumn: GeographyKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column AgeKey
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 27f15f40-9d49-452d-a8ee-373ec993ff1e
+		sourceLineageTag: AgeKey
+		summarizeBy: none
+		sourceColumn: AgeKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Energy_Intensity_Per_SqM
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 5ed513d0-8b87-4b5f-9f57-5742f13bdb25
+		sourceLineageTag: Energy_Intensity_Per_SqM
+		summarizeBy: sum
+		sourceColumn: Energy_Intensity_Per_SqM
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Updated_Energy_Rating
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 890db481-77a7-43b7-a70a-ad510f4df631
+		sourceLineageTag: Updated_Energy_Rating
+		summarizeBy: none
+		sourceColumn: Updated_Energy_Rating
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_sustainability_assessments = entity
+		mode: directLake
+		source
+			entityName: fact_sustainability_assessments
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

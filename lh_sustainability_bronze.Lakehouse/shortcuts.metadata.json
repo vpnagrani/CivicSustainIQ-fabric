@@ -1,0 +1,51 @@
+[
+  {
+    "name": "fact_national_ber_ratings",
+    "path": "/Tables/dbo",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/fact_national_ber_ratings",
+        "itemId": "805528e1-8115-49ec-b055-29eefa346467",
+        "workspaceId": "b5be5ed1-b7bc-4ebb-93f4-ac1364c78725"
+      }
+    }
+  },
+  {
+    "name": "dim_council_assets",
+    "path": "/Tables/dbo",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/dim_council_assets",
+        "itemId": "805528e1-8115-49ec-b055-29eefa346467",
+        "workspaceId": "b5be5ed1-b7bc-4ebb-93f4-ac1364c78725"
+      }
+    }
+  },
+  {
+    "name": "dim_council_assests",
+    "path": "/Tables/dbo",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/dim_council_assets",
+        "itemId": "805528e1-8115-49ec-b055-29eefa346467",
+        "workspaceId": "b5be5ed1-b7bc-4ebb-93f4-ac1364c78725"
+      }
+    }
+  },
+  {
+    "name": "clean_ber_search",
+    "path": "/Tables/dbo",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/clean_ber_search",
+        "itemId": "451f2994-c933-96ab-41c5-685d7dc1b5d2",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "artifactType": "Lakehouse"
+      }
+    }
+  }
+]

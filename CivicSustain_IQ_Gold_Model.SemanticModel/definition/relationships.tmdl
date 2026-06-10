@@ -1,0 +1,16 @@
+relationship 8529d209-8fa7-e852-4fe4-06fc331b390e
+	fromColumn: fact_sustainability_assessments.GeographyKey
+	toColumn: dim_geography.GeographyKey
+
+relationship 592e85d1-730a-5ccf-16d3-0266b007fb53
+	fromColumn: fact_sustainability_assessments.AgeKey
+	toColumn: dim_construction_era.AgeKey
+
+relationship 2d60cd20-edaf-00a8-f2f5-520477c7b7ee
+	fromColumn: fact_sustainability_assessments.SA_Code
+	toColumn: dim_small_area_mapping.SA_PUB2016
+
+relationship 0a97413b-8e0e-157a-ed5d-b5b8a2564321
+	fromColumn: dim_small_area_mapping.ED_ENGLISH
+	toColumn: dim_deprivation_index.ED_Name
+

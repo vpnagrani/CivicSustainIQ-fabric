@@ -1,0 +1,33 @@
+table dim_geography
+	lineageTag: 34abe367-11e5-4ff2-b0b0-3de1209fe7b9
+	sourceLineageTag: [dbo].[dim_geography]
+
+	column GeographyKey
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d2b21843-d12b-4a4f-bf62-b681f86e0adb
+		sourceLineageTag: GeographyKey
+		summarizeBy: none
+		sourceColumn: GeographyKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountyName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1c4e35f8-09ec-4c36-bf0d-819327f26258
+		sourceLineageTag: CountyName
+		summarizeBy: none
+		sourceColumn: CountyName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_geography = entity
+		mode: directLake
+		source
+			entityName: dim_geography
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

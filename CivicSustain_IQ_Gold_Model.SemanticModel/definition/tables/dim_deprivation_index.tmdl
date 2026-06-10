@@ -1,0 +1,758 @@
+table dim_deprivation_index
+	lineageTag: 3aed8960-9b19-4d90-8962-c3e8d250147e
+	sourceLineageTag: [dbo].[dim_deprivation_index]
+
+	column ID06
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: b8a0e2a0-f06b-4fa5-a4f6-444a35105c97
+		sourceLineageTag: ID06
+		summarizeBy: none
+		sourceColumn: ID06
+
+		annotation SummarizationSetBy = Automatic
+
+	column ED_Name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e99bfe4e-617a-48e8-bc6b-b4bdb86ec3ae
+		sourceLineageTag: ED_Name
+		summarizeBy: none
+		sourceColumn: ED_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column NUTS4
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: fcaa3d8d-087b-46b8-afb7-124618cf03fa
+		sourceLineageTag: NUTS4
+		summarizeBy: none
+		sourceColumn: NUTS4
+
+		annotation SummarizationSetBy = Automatic
+
+	column NUTS3
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 75ee5e1c-5158-48b8-9333-4003f4f7a00d
+		sourceLineageTag: NUTS3
+		summarizeBy: none
+		sourceColumn: NUTS3
+
+		annotation SummarizationSetBy = Automatic
+
+	column NUTS2
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: c9d6e6d6-326f-4201-955a-91922e6de4e8
+		sourceLineageTag: NUTS2
+		summarizeBy: none
+		sourceColumn: NUTS2
+
+		annotation SummarizationSetBy = Automatic
+
+	column NUTS1
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1a888b63-d8e4-4897-9100-00609fd7e670
+		sourceLineageTag: NUTS1
+		summarizeBy: none
+		sourceColumn: NUTS1
+
+		annotation SummarizationSetBy = Automatic
+
+	column HP2006abs
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 24a86651-b75a-41a7-97ed-20afaf0059ab
+		sourceLineageTag: HP2006abs
+		summarizeBy: none
+		sourceColumn: HP2006abs
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HP2011abs
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 0442995c-1edb-47fc-93e4-2434f80c3819
+		sourceLineageTag: HP2011abs
+		summarizeBy: none
+		sourceColumn: HP2011abs
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HP2016abs
+		dataType: double
+		sourceProviderType: float
+		lineageTag: c9976dca-755f-456b-b06b-2efa2e22f0c3
+		sourceLineageTag: HP2016abs
+		summarizeBy: none
+		sourceColumn: HP2016abs
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HP2006rel
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 603e2eef-4918-4099-ac97-5cab5a5656bb
+		sourceLineageTag: HP2006rel
+		summarizeBy: none
+		sourceColumn: HP2006rel
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HP2011rel
+		dataType: double
+		sourceProviderType: float
+		lineageTag: b729ff28-9677-4375-9982-bdff6e4cb5a8
+		sourceLineageTag: HP2011rel
+		summarizeBy: none
+		sourceColumn: HP2011rel
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HP2016rel
+		dataType: double
+		sourceProviderType: float
+		lineageTag: d3fe112c-ddce-4b2a-8df9-d6e5ddb7df29
+		sourceLineageTag: HP2016rel
+		summarizeBy: none
+		sourceColumn: HP2016rel
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TOTPOP02
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 587fa3ca-bcfa-4863-bc92-398700ecc279
+		sourceLineageTag: TOTPOP02
+		summarizeBy: none
+		sourceColumn: TOTPOP02
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOTPOP06
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a6ebf248-35ed-48bc-8604-ebe8ed66661a
+		sourceLineageTag: TOTPOP06
+		summarizeBy: none
+		sourceColumn: TOTPOP06
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOTPOP11
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f82eef3f-0e91-4a2f-a83f-09adbcd57257
+		sourceLineageTag: TOTPOP11
+		summarizeBy: none
+		sourceColumn: TOTPOP11
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOTPOP16
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7bea4db2-eb87-442f-a6d5-e5a5e96e1a81
+		sourceLineageTag: TOTPOP16
+		summarizeBy: none
+		sourceColumn: TOTPOP16
+
+		annotation SummarizationSetBy = Automatic
+
+	column popdep_T
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 6af234b8-7796-49c0-9fd1-3548d5800ff6
+		sourceLineageTag: popdep_T
+		summarizeBy: none
+		sourceColumn: popdep_T
+
+		annotation SummarizationSetBy = Automatic
+
+	column popdep_L
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: c9fb53b3-cb78-43dc-9a62-9a7df7521527
+		sourceLineageTag: popdep_L
+		summarizeBy: none
+		sourceColumn: popdep_L
+
+		annotation SummarizationSetBy = Automatic
+
+	column popdep_M
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 8f7fb0ac-dc93-486d-ad51-c86a98b1857b
+		sourceLineageTag: popdep_M
+		summarizeBy: none
+		sourceColumn: popdep_M
+
+		annotation SummarizationSetBy = Automatic
+
+	column popdep_H
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 20c54f2d-0b4e-4d82-9c08-022417eb67e3
+		sourceLineageTag: popdep_H
+		summarizeBy: none
+		sourceColumn: popdep_H
+
+		annotation SummarizationSetBy = Automatic
+
+	column share_T
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 97bcd6e5-ce25-4bef-8fa7-ae689ef34fd4
+		sourceLineageTag: share_T
+		summarizeBy: none
+		sourceColumn: share_T
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column share_L
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 24a7870c-4a56-4812-8139-ca229b6ff947
+		sourceLineageTag: share_L
+		summarizeBy: none
+		sourceColumn: share_L
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column share_M
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 6e0353dd-effb-454b-8cf4-542247b0dde5
+		sourceLineageTag: share_M
+		summarizeBy: none
+		sourceColumn: share_M
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column share_H
+		dataType: double
+		sourceProviderType: float
+		lineageTag: d809ad90-28bf-4642-83c9-adf984d885bd
+		sourceLineageTag: share_H
+		summarizeBy: none
+		sourceColumn: share_H
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column share
+		dataType: double
+		sourceProviderType: float
+		lineageTag: f0cfca9e-7ee3-4abe-9758-bc21827035c5
+		sourceLineageTag: share
+		summarizeBy: none
+		sourceColumn: share
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column POPCHG06
+		dataType: double
+		sourceProviderType: float
+		lineageTag: f5f55593-9614-48fe-87a6-524547804c7f
+		sourceLineageTag: POPCHG06
+		summarizeBy: none
+		sourceColumn: POPCHG06
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column POPCHG11
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 2bb20ab6-ff82-4e2e-9c3f-0ec0eef0031f
+		sourceLineageTag: POPCHG11
+		summarizeBy: none
+		sourceColumn: POPCHG11
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column POPCHG16
+		dataType: double
+		sourceProviderType: float
+		lineageTag: ff17fe23-5239-41f5-a5ce-0ab555db639b
+		sourceLineageTag: POPCHG16
+		summarizeBy: none
+		sourceColumn: POPCHG16
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AGEDEP06
+		dataType: double
+		sourceProviderType: float
+		lineageTag: c9ac3220-1ef0-4093-a3e4-f7c2864c280b
+		sourceLineageTag: AGEDEP06
+		summarizeBy: none
+		sourceColumn: AGEDEP06
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AGEDEP11
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 7f511605-ebff-4902-8cca-668761ff3c79
+		sourceLineageTag: AGEDEP11
+		summarizeBy: none
+		sourceColumn: AGEDEP11
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AGEDEP16
+		dataType: double
+		sourceProviderType: float
+		lineageTag: af7abac0-9d03-40b9-a044-1d6c94bfb2ad
+		sourceLineageTag: AGEDEP16
+		summarizeBy: none
+		sourceColumn: AGEDEP16
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LONEPA06
+		dataType: double
+		sourceProviderType: float
+		lineageTag: fe93539d-dba7-4c83-8ad4-68822d160c54
+		sourceLineageTag: LONEPA06
+		summarizeBy: none
+		sourceColumn: LONEPA06
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LONEPA11
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 8e311dd4-91b6-46f2-b398-b45b880c18c2
+		sourceLineageTag: LONEPA11
+		summarizeBy: none
+		sourceColumn: LONEPA11
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LONEPA16
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 21bc8446-f3da-489f-a7f5-b4c8092c1c1d
+		sourceLineageTag: LONEPA16
+		summarizeBy: none
+		sourceColumn: LONEPA16
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EDLOW_06
+		dataType: double
+		sourceProviderType: float
+		lineageTag: e1638677-1252-4aaa-b564-164fb80a39a3
+		sourceLineageTag: EDLOW_06
+		summarizeBy: none
+		sourceColumn: EDLOW_06
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EDLOW_11
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 07661520-d8d9-4af9-ba11-b48bcc817d10
+		sourceLineageTag: EDLOW_11
+		summarizeBy: none
+		sourceColumn: EDLOW_11
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EDLOW_16
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 589ffca3-dd6f-429c-8401-db4fafe7331b
+		sourceLineageTag: EDLOW_16
+		summarizeBy: none
+		sourceColumn: EDLOW_16
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EDHIGH06
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 1f7714de-010f-4158-bb4c-f1dcb75b880b
+		sourceLineageTag: EDHIGH06
+		summarizeBy: none
+		sourceColumn: EDHIGH06
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EDHIGH11
+		dataType: double
+		sourceProviderType: float
+		lineageTag: cfa9c2a9-f860-433e-8516-c67cdfccfc76
+		sourceLineageTag: EDHIGH11
+		summarizeBy: none
+		sourceColumn: EDHIGH11
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EDHIGH16
+		dataType: double
+		sourceProviderType: float
+		lineageTag: ba51d9b4-c230-417e-8df9-3fed2c86d427
+		sourceLineageTag: EDHIGH16
+		summarizeBy: none
+		sourceColumn: EDHIGH16
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HLPROF06
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 14f8f044-ed8c-42d9-9bac-4e8d3c20e7ee
+		sourceLineageTag: HLPROF06
+		summarizeBy: none
+		sourceColumn: HLPROF06
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HLPROF11
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 5bfbb607-9881-41da-8cb4-bbd594401481
+		sourceLineageTag: HLPROF11
+		summarizeBy: none
+		sourceColumn: HLPROF11
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HLPROF16
+		dataType: double
+		sourceProviderType: float
+		lineageTag: f1ab8759-a1de-469e-8f65-5fea1a39f2fd
+		sourceLineageTag: HLPROF16
+		summarizeBy: none
+		sourceColumn: HLPROF16
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LSKILL06
+		dataType: double
+		sourceProviderType: float
+		lineageTag: e3edb67c-986e-48b7-97a8-cb79ac1f0552
+		sourceLineageTag: LSKILL06
+		summarizeBy: none
+		sourceColumn: LSKILL06
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LSKILL11
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 5adfbfee-6a12-41f6-9059-65160a11006d
+		sourceLineageTag: LSKILL11
+		summarizeBy: none
+		sourceColumn: LSKILL11
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LSKILL16
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 54973a94-b6ca-40d0-aa2b-25913198b820
+		sourceLineageTag: LSKILL16
+		summarizeBy: none
+		sourceColumn: LSKILL16
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UNEMPM06
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 2fa6fdc1-24cd-482a-b696-78c74bce82eb
+		sourceLineageTag: UNEMPM06
+		summarizeBy: none
+		sourceColumn: UNEMPM06
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UNEMPM11
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 88237317-a596-46b0-9cc5-b9bb05310518
+		sourceLineageTag: UNEMPM11
+		summarizeBy: none
+		sourceColumn: UNEMPM11
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UNEMPM16
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 0a1d2ddb-95ce-4ae3-88b7-69954d171bb9
+		sourceLineageTag: UNEMPM16
+		summarizeBy: none
+		sourceColumn: UNEMPM16
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UNEMPF06
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 583ef263-1a4d-4efe-b2b0-54afcbff9016
+		sourceLineageTag: UNEMPF06
+		summarizeBy: none
+		sourceColumn: UNEMPF06
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UNEMPF11
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 55ee1a9d-6a9c-4a9b-b768-28fb98132864
+		sourceLineageTag: UNEMPF11
+		summarizeBy: none
+		sourceColumn: UNEMPF11
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UNEMPF16
+		dataType: double
+		sourceProviderType: float
+		lineageTag: cd92c228-31ac-49d7-98f2-b826df9986f8
+		sourceLineageTag: UNEMPF16
+		summarizeBy: none
+		sourceColumn: UNEMPF16
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PEROOM06
+		dataType: double
+		sourceProviderType: float
+		lineageTag: adf8cddc-6e1d-42fe-9585-a018007d5f0b
+		sourceLineageTag: PEROOM06
+		summarizeBy: none
+		sourceColumn: PEROOM06
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PEROOM11
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 2f6f2418-d0e1-450c-ba03-64f05901b8c7
+		sourceLineageTag: PEROOM11
+		summarizeBy: none
+		sourceColumn: PEROOM11
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PEROOM16
+		dataType: double
+		sourceProviderType: float
+		lineageTag: aa2bad5b-8109-46d3-a020-974cb8c412f4
+		sourceLineageTag: PEROOM16
+		summarizeBy: none
+		sourceColumn: PEROOM16
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LARENT06
+		dataType: double
+		sourceProviderType: float
+		lineageTag: ae9b9bf8-1fde-46da-a60c-7a3b1868650c
+		sourceLineageTag: LARENT06
+		summarizeBy: none
+		sourceColumn: LARENT06
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LARENT11
+		dataType: double
+		sourceProviderType: float
+		lineageTag: d5586cef-ca77-4d56-986a-0ae313b7df54
+		sourceLineageTag: LARENT11
+		summarizeBy: none
+		sourceColumn: LARENT11
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LARENT16
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 2ae2e2e6-dde7-4fc9-8fb4-9630001ff2b9
+		sourceLineageTag: LARENT16
+		summarizeBy: none
+		sourceColumn: LARENT16
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PRRENT06
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 05c77d84-252a-4866-bfdb-b53d238b1052
+		sourceLineageTag: PRRENT06
+		summarizeBy: none
+		sourceColumn: PRRENT06
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PRRENT11
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 2eae9a95-224a-47d8-b8a5-ef5442ec97f8
+		sourceLineageTag: PRRENT11
+		summarizeBy: none
+		sourceColumn: PRRENT11
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PRRENT16
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 0b7e768b-5873-461b-8afe-df03776b691b
+		sourceLineageTag: PRRENT16
+		summarizeBy: none
+		sourceColumn: PRRENT16
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OHOUSE06
+		dataType: double
+		sourceProviderType: float
+		lineageTag: b522def8-9083-422a-8875-d69ea01094d2
+		sourceLineageTag: OHOUSE06
+		summarizeBy: none
+		sourceColumn: OHOUSE06
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OHOUSE11
+		dataType: double
+		sourceProviderType: float
+		lineageTag: cb3f4b34-2d99-46fc-9526-3ef4ac5e6958
+		sourceLineageTag: OHOUSE11
+		summarizeBy: none
+		sourceColumn: OHOUSE11
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OHOUSE16
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 8e2e2ea8-f222-4f6b-8369-8c87c02f7e93
+		sourceLineageTag: OHOUSE16
+		summarizeBy: none
+		sourceColumn: OHOUSE16
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition dim_deprivation_index = entity
+		mode: directLake
+		source
+			entityName: dim_deprivation_index
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,44 @@
+table dim_construction_era
+	lineageTag: 16b26fe8-fdfc-42a5-bb7f-d0ba4f0c517c
+	sourceLineageTag: [dbo].[dim_construction_era]
+
+	column AgeKey
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 4646e7b3-88c2-4783-a730-42be9174cfda
+		sourceLineageTag: AgeKey
+		summarizeBy: none
+		sourceColumn: AgeKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year_of_Construction
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: fcf93535-6b52-4b8d-bd45-394ce8ac9f7f
+		sourceLineageTag: Year_of_Construction
+		summarizeBy: none
+		sourceColumn: Year_of_Construction
+
+		annotation SummarizationSetBy = Automatic
+
+	column Construction_Era
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9daabfb0-ef89-446f-b10f-98a67f0d090b
+		sourceLineageTag: Construction_Era
+		summarizeBy: none
+		sourceColumn: Construction_Era
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_construction_era = entity
+		mode: directLake
+		source
+			entityName: dim_construction_era
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+
