@@ -11,16 +11,16 @@ steps:
   persistCredentials: true
 
 - script: |
-    # 1. Standardize local bot tracking
+    # 1. Standardize local bot identity
     git config --global user.email "fabric-bot@azuredevops.com"
     git config --global user.name "Fabric Mirror Bot"
     
-    # 2. Add the external target destination using the environment variable injection safely
-    # Note: Using $GITHUB_PAT instead of $(GITHUB_PAT) prevents Bash command parsing errors
-    git remote add target "https://${GITHUB_PAT}@github.com/vpnagrani/CivicSustainIQ-fabric.git"
+    # 2. Prevent caching issues: explicitly strip out old targets if they exist
+    git remote remove target_repo 2>/dev/null || true
     
-    # 3. Synchronize repository state completely
-    git push --prune target +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
+    # 3. Force push the codebase directly using your active environment variable token
+    git push --prune --force "https://${GITHUB_PAT}@github.com/vpnagrani/CivicSustainIQ-fabric.git" +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
+    
   displayName: 'Mirroring Microsoft Fabric Workspace to External Git'
   env:
-    GITHUB_PAT: $(SECRET_GITHUB_PAT) # This safely passes your secret variable into the script environment
+    GITHUB_PAT: $(SECRET_GITHUB_PAT)
