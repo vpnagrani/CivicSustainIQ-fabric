@@ -11,15 +11,11 @@ steps:
   persistCredentials: true
 
 - script: |
-    # 1. Standardize local bot identity
     git config --global user.email "fabric-bot@azuredevops.com"
     git config --global user.name "Fabric Mirror Bot"
     
-    # 2. Prevent caching issues: explicitly strip out old targets if they exist
-    git remote remove target_repo 2>/dev/null || true
-    
-    # 3. Force push the codebase directly using your active environment variable token
-    git push --prune --force "https://${GITHUB_PAT}@github.com/vpnagrani/CivicSustainIQ-fabric" +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
+    # Direct push forcing the brand new token authorization context
+    git push --force "https://${GITHUB_PAT}@github.com/vpnagrani/CivicSustainIQ-fabric.git" HEAD:main
     
   displayName: 'Mirroring Microsoft Fabric Workspace to External Git'
   env:
