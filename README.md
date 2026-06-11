@@ -4,6 +4,7 @@ CivicSustainIQ is an enterprise-grade AI and Data Engineering platform built to 
 
 By integrating a unified **Microsoft Fabric Lakehouse Medallion Architecture** with an advanced **Operational Data Foundry & Ontology Layer**, the platform seamlessly blends fragmented national datasets—Building Energy Ratings (BER), Central Statistics Office (CSO) geospatial boundaries, and Pobal Socio-Economic Deprivation Indices—into a living, actionable digital twin of the Irish housing ecosystem.
 
+Video Demo : https://youtu.be/35ds2cHNtps
 ---
 
 ## 🏗️ Enterprise Architecture: The Medallion-to-Foundry Pipeline
